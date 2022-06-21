@@ -9,7 +9,8 @@ import UIKit
 
 class NewViewController : ViewController {
     
-    @IBOutlet weak var bookImage: UIImageView!
+    
+    @IBOutlet weak var bookTableView: UITableView!
     
     
     
@@ -19,37 +20,28 @@ class NewViewController : ViewController {
         self.navigationItem.title = "New Books"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        bookTableView.delegate = self
+        bookTableView.dataSource = self
+        
         
     }
     
-    func configureView(book: Book) {
+   
+}
 
-        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { [weak self] data, response, error in
-            let successRange = (200..<300)
-            guard let data = data, error == nil else { return }
-            let decoder = JSONDecoder()
-            if let response = response as? HTTPURLResponse, successRange.contains(response.statusCode) {
-                guard let book = try? decoder.decode(Book.self, from: data) else { return }
-                DispatchQueue.main.async {
-                    self?.configureView(book: book)
-                }
-            } else {
-                return
-            }
-        }
-        // 이미지
-//        self.bookImage. = book.image
+extension NewViewController : UITableViewDelegate {
+    
+}
 
-//        self.bookTitle.text = book.title
-//        self.bookSubTitle.text = book.subtitle
-//        self.bookIsbn13.text = "\(Int(book.isbn13))"
-//        self.bookPrice.text = book.price
+extension NewViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
-
-    func clickLinkButton() {
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
+        
+        return cell
     }
 }
 

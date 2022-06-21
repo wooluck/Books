@@ -16,7 +16,7 @@
 		C376B0AD286180140050FA74 /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0AC286180140050FA74 /* NewViewController.swift */; };
 		C376B0AF2861802E0050FA74 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0AE2861802E0050FA74 /* SearchViewController.swift */; };
 		C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B2286186060050FA74 /* NewDetailViewController.swift */; };
-		C376B0B728618F430050FA74 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B628618F430050FA74 /* Book.swift */; };
+		C376B0B728618F430050FA74 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B628618F430050FA74 /* BookModel.swift */; };
 		C376B0B92861A6F40050FA74 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +32,7 @@
 		C376B0AC286180140050FA74 /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
 		C376B0AE2861802E0050FA74 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C376B0B2286186060050FA74 /* NewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailViewController.swift; sourceTree = "<group>"; };
-		C376B0B628618F430050FA74 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		C376B0B628618F430050FA74 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +75,7 @@
 				C376B09E28617F350050FA74 /* Main.storyboard */,
 				C376B0B1286180460050FA74 /* New */,
 				C376B0B02861803B0050FA74 /* Search */,
-				C376B0B628618F430050FA74 /* Book.swift */,
+				C376B0B628618F430050FA74 /* BookModel.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -171,7 +171,7 @@
 			files = (
 				C376B0AF2861802E0050FA74 /* SearchViewController.swift in Sources */,
 				C376B09D28617F350050FA74 /* ViewController.swift in Sources */,
-				C376B0B728618F430050FA74 /* Book.swift in Sources */,
+				C376B0B728618F430050FA74 /* BookModel.swift in Sources */,
 				C376B09928617F350050FA74 /* AppDelegate.swift in Sources */,
 				C376B09B28617F350050FA74 /* SceneDelegate.swift in Sources */,
 				C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */,

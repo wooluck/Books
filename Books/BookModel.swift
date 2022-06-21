@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Book : Codable {
+struct BookModel : Codable {
     
     let title : String
     let subtitle : String
@@ -17,3 +17,4 @@ struct Book : Codable {
     let url : String
 
 }
+
