@@ -7,15 +7,19 @@
 
 import Foundation
 
-struct BookModel : Codable {
-    
-    let title : String
-    let subtitle : String
-    let isbn13 : Int
-    let price : String
-    let image : String
-    let url : String
+struct BookModel: Codable {
+    let error: String
+    let total: String
+    let books: [Book]
+}
 
+struct Book: Codable {
+    let title: String
+    let subtitle: String
+    let isbn13: String
+    let price: String
+    let image: String
+    let url: String
 }
 
 

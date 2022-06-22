@@ -30,12 +30,12 @@ class NewDetailViewController : UIViewController {
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        let imageURL = URL(string: book.image)
-        bookDetailImage.kf.setImage(with: imageURL)
-        bookDetailTitle.text = book.title
-        bookDetailSubTitle.text = book.subtitle
-        bookDetailIsbn13.text = "\(book.isbn13)"
-        bookDetailPrice.text = book.price
+//        let imageURL = URL(string: book.image)
+//        bookDetailImage.kf.setImage(with: imageURL)
+//        bookDetailTitle.text = book.title
+//        bookDetailSubTitle.text = book.subtitle
+//        bookDetailIsbn13.text = "\(book.isbn13)"
+//        bookDetailPrice.text = book.price
     }
     
     

@@ -104,9 +104,9 @@
 				C37514262862B0F0007AA4DF /* Application */,
 				C37514282862B130007AA4DF /* Resource */,
 				C37514292862B147007AA4DF /* StoryBoard */,
+				C37514272862B0FE007AA4DF /* Model */,
 				C376B0B1286180460050FA74 /* New */,
 				C376B0B02861803B0050FA74 /* Search */,
-				C37514272862B0FE007AA4DF /* Model */,
 			);
 			path = Books;
 			sourceTree = "<group>";

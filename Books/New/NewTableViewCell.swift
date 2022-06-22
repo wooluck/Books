@@ -28,14 +28,14 @@ class NewTableViewCell: UITableViewCell {
        
     }
     
-    func configureView(with bookModel: BookModel) {
+    func configureView(with bookModel: Book) {
 
         let imageURL = URL(string: bookModel.image )
         bookImage.kf.setImage(with: imageURL)
         bookTitle.text = bookModel.title
         bookSubTitle.text = bookModel.subtitle
-        bookIsbn13.text = "\(bookModel.isbn13)"
-        bookPrice.text = bookModel.price 
+        bookIsbn13.text = bookModel.isbn13
+        bookPrice.text = bookModel.price
         
         selectionStyle = .none
     }
