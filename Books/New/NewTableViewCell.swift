@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewTableViewCell: UITableViewCell {
     
@@ -24,46 +25,46 @@ class NewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.getURLBookData()
        
     }
+    
+    func configureView(with bookModel: BookModel) {
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        let imageURL = URL(string: bookModel.image )
+        bookImage.kf.setImage(with: imageURL)
+        bookTitle.text = bookModel.title
+        bookSubTitle.text = bookModel.subtitle
+        bookIsbn13.text = "\(bookModel.isbn13)"
+        bookPrice.text = bookModel.price 
+        
+        selectionStyle = .none
     }
     
-    func configureView(bookModel: BookModel) {
-        // 이미지도 넣어야됨
-        self.bookTitle.text = bookModel.title
-        self.bookSubTitle.text = bookModel.subtitle
-        self.bookIsbn13.text = "\(Int(bookModel.isbn13))"
-        self.bookPrice.text = bookModel.price
-        
-    }
-    
-    func getURLBookData() {
-
-        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-        
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            
-            let decoder = JSONDecoder()
-            
-            guard let book = try? decoder.decode(BookModel.self, from: data) else { return }
-            DispatchQueue.main.async {
-                self.configureView(bookModel: book)
-            }
-            
-            
-        }
-       
-        
-    }
+//    func getURLBookData() {
+//
+//        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
+//
+//        // 네트워킹 시작
+//        let session = URLSession(configuration: .default)
+//
+//        session.dataTask(with: url) { data, response, error in
+//            guard let data = data, error == nil else { return }
+//
+//            // Json타입의 데이터를 디코딩
+//            let decoder = JSONDecoder()
+//            let bookResponse = try? decoder.decode(BookModel.self, from: data)
+//            self.books = BookModel.
+//
+//            guard let book = try? decoder.decode(BookModel.self, from: data) else { return }
+//            DispatchQueue.main.async {
+//                self.configureView(bookModel: book)
+//            }
+//
+//
+//        }
+//
+//
+//    }
 
 
 

@@ -9,6 +9,7 @@ import UIKit
 
 class NewViewController : ViewController {
     
+    var bookList = [BookModel]()
     
     @IBOutlet weak var bookTableView: UITableView!
     
@@ -22,7 +23,7 @@ class NewViewController : ViewController {
         
         bookTableView.delegate = self
         bookTableView.dataSource = self
-        
+        bookTableView.register(NewTableViewCell.self, forCellReuseIdentifier: "NewCell")
         
     }
     
@@ -35,13 +36,24 @@ extension NewViewController : UITableViewDelegate {
 
 extension NewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return bookList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
         
+        let book = bookList[indexPath.row]
+        cell.configureView(with: book)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBook = bookList[indexPath.row]
+        let newDetailViewController = NewDetailViewController()
+        
+        newDetailViewController.book = selectedBook
+        self.show(newDetailViewController, sender: nil)
     }
 }
 

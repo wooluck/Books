@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class NewDetailViewController : ViewController {
+    
+    var book: BookModel!
+    
+    // 이렇게 셀자체를 가져올수가 있는지
+    var newTableViewCell = NewTableViewCell()
     
     @IBOutlet weak var bookDetailImage: UIImageView!
     @IBOutlet weak var bookDetailTitle: UILabel!
@@ -23,6 +29,13 @@ class NewDetailViewController : ViewController {
         
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let imageURL = URL(string: book.image)
+        bookDetailImage.kf.setImage(with: imageURL)
+        bookDetailTitle.text = book.title
+        bookDetailSubTitle.text = book.subtitle
+        bookDetailIsbn13.text = "\(book.isbn13)"
+        bookDetailPrice.text = book.price
     }
     
     
