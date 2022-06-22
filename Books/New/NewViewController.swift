@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewViewController : ViewController {
+class NewViewController : UIViewController {
     
     var bookList = [BookModel]()
     
@@ -26,8 +26,28 @@ class NewViewController : ViewController {
         bookTableView.register(NewTableViewCell.self, forCellReuseIdentifier: "NewCell")
         
     }
-    
-   
+}
+
+extension NewViewController {
+    func fetchBook() {
+        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            guard error == nil,
+                  let self = self,
+                  let reponse = response as? HTTPURLResponse,
+                  let data = data,
+                  let book = try? JSONDecoder().decode([BookModel].self, from: data) else {
+                      print("ERROR : URLSession")
+                      return
+                  }
+            
+            
+        }
+    }
 }
 
 extension NewViewController : UITableViewDelegate {

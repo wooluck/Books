@@ -10,7 +10,6 @@
 		C37514252862A40E007AA4DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C37514242862A40E007AA4DF /* Kingfisher */; };
 		C376B09928617F350050FA74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B09828617F350050FA74 /* AppDelegate.swift */; };
 		C376B09B28617F350050FA74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B09A28617F350050FA74 /* SceneDelegate.swift */; };
-		C376B09D28617F350050FA74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B09C28617F350050FA74 /* ViewController.swift */; };
 		C376B0A028617F350050FA74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C376B09E28617F350050FA74 /* Main.storyboard */; };
 		C376B0A228617F360050FA74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C376B0A128617F360050FA74 /* Assets.xcassets */; };
 		C376B0A528617F360050FA74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C376B0A328617F360050FA74 /* LaunchScreen.storyboard */; };
@@ -25,7 +24,6 @@
 		C376B09528617F350050FA74 /* Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C376B09828617F350050FA74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C376B09A28617F350050FA74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C376B09C28617F350050FA74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C376B09F28617F350050FA74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C376B0A128617F360050FA74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C376B0A428617F360050FA74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +47,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C37514262862B0F0007AA4DF /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C376B09828617F350050FA74 /* AppDelegate.swift */,
+				C376B09A28617F350050FA74 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		C37514272862B0FE007AA4DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C376B0B628618F430050FA74 /* BookModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C37514282862B130007AA4DF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C376B0A128617F360050FA74 /* Assets.xcassets */,
+				C376B0A328617F360050FA74 /* LaunchScreen.storyboard */,
+				C376B0A628617F360050FA74 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C37514292862B147007AA4DF /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C376B09E28617F350050FA74 /* Main.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		C376B08C28617F350050FA74 = {
 			isa = PBXGroup;
 			children = (
@@ -68,16 +101,12 @@
 		C376B09728617F350050FA74 /* Books */ = {
 			isa = PBXGroup;
 			children = (
-				C376B0A128617F360050FA74 /* Assets.xcassets */,
-				C376B0A328617F360050FA74 /* LaunchScreen.storyboard */,
-				C376B0A628617F360050FA74 /* Info.plist */,
-				C376B09828617F350050FA74 /* AppDelegate.swift */,
-				C376B09A28617F350050FA74 /* SceneDelegate.swift */,
-				C376B09C28617F350050FA74 /* ViewController.swift */,
-				C376B09E28617F350050FA74 /* Main.storyboard */,
+				C37514262862B0F0007AA4DF /* Application */,
+				C37514282862B130007AA4DF /* Resource */,
+				C37514292862B147007AA4DF /* StoryBoard */,
 				C376B0B1286180460050FA74 /* New */,
 				C376B0B02861803B0050FA74 /* Search */,
-				C376B0B628618F430050FA74 /* BookModel.swift */,
+				C37514272862B0FE007AA4DF /* Model */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -178,7 +207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C376B0AF2861802E0050FA74 /* SearchViewController.swift in Sources */,
-				C376B09D28617F350050FA74 /* ViewController.swift in Sources */,
 				C376B0B728618F430050FA74 /* BookModel.swift in Sources */,
 				C376B09928617F350050FA74 /* AppDelegate.swift in Sources */,
 				C376B09B28617F350050FA74 /* SceneDelegate.swift in Sources */,

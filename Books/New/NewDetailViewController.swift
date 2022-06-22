@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class NewDetailViewController : ViewController {
+class NewDetailViewController : UIViewController {
     
     var book: BookModel!
     
