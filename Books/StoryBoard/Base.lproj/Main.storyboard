@@ -43,20 +43,19 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Office 2021 and Microsoft 365" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7Z-ZK-tnx">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 2021 and Microsoft 365" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7Z-ZK-tnx">
                                                             <rect key="frame" x="0.0" y="35" width="414" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="9780137559534" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsS-HV-27D">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9780137559534" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsS-HV-27D">
                                                             <rect key="frame" x="0.0" y="60" width="414" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$42.16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGb-cT-PDx">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$42.16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGb-cT-PDx">
                                                             <rect key="frame" x="183" y="81" width="48" height="17"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                             <nil key="textColor"/>
@@ -66,10 +65,18 @@
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <color key="tintColor" systemColor="systemPinkColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="42L-MW-1Wn" firstAttribute="leading" secondItem="DxJ-ms-KX2" secondAttribute="leading" id="Gk1-ss-mMg"/>
-                                                        <constraint firstItem="42L-MW-1Wn" firstAttribute="top" secondItem="DxJ-ms-KX2" secondAttribute="top" constant="8" id="MMD-Mq-Qua"/>
-                                                        <constraint firstItem="RGb-cT-PDx" firstAttribute="top" secondItem="CsS-HV-27D" secondAttribute="bottom" constant="5" id="StK-zP-XMf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="42L-MW-1Wn" secondAttribute="trailing" id="VkU-Lc-Znp"/>
+                                                        <constraint firstItem="CsS-HV-27D" firstAttribute="top" secondItem="J7Z-ZK-tnx" secondAttribute="bottom" constant="5" id="91P-9T-PXu"/>
+                                                        <constraint firstItem="J7Z-ZK-tnx" firstAttribute="leading" secondItem="DxJ-ms-KX2" secondAttribute="leading" id="AKa-z1-JHH"/>
+                                                        <constraint firstItem="CsS-HV-27D" firstAttribute="leading" secondItem="DxJ-ms-KX2" secondAttribute="leading" id="Ayy-aN-39Q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RGb-cT-PDx" secondAttribute="bottom" constant="32" id="Bt6-e5-AHr"/>
+                                                        <constraint firstAttribute="trailing" secondItem="42L-MW-1Wn" secondAttribute="trailing" id="IyQ-bV-KVC"/>
+                                                        <constraint firstItem="42L-MW-1Wn" firstAttribute="leading" secondItem="DxJ-ms-KX2" secondAttribute="leading" id="W1A-f6-Sa9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="RGb-cT-PDx" secondAttribute="trailing" constant="183" id="eEe-Xb-sct"/>
+                                                        <constraint firstItem="RGb-cT-PDx" firstAttribute="leading" secondItem="DxJ-ms-KX2" secondAttribute="leading" constant="183" id="kae-UV-ulP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="J7Z-ZK-tnx" secondAttribute="trailing" id="nwt-jw-7Qm"/>
+                                                        <constraint firstItem="42L-MW-1Wn" firstAttribute="top" secondItem="DxJ-ms-KX2" secondAttribute="top" constant="8" id="sGY-aM-SP2"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CsS-HV-27D" secondAttribute="trailing" id="xP7-To-8S8"/>
+                                                        <constraint firstItem="J7Z-ZK-tnx" firstAttribute="top" secondItem="42L-MW-1Wn" secondAttribute="bottom" constant="5" id="zbu-e9-pyO"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRc-Ww-lFD">
@@ -97,6 +104,7 @@
                                             <outlet property="bookPrice" destination="RGb-cT-PDx" id="0rh-YB-rgg"/>
                                             <outlet property="bookSubTitle" destination="J7Z-ZK-tnx" id="q71-7Q-bPx"/>
                                             <outlet property="bookTitle" destination="42L-MW-1Wn" id="3N9-2c-ePk"/>
+                                            <outlet property="subView" destination="DxJ-ms-KX2" id="uIz-05-82U"/>
                                             <segue destination="HbA-Sz-GOb" kind="show" id="YLw-Ge-YuX"/>
                                         </connections>
                                     </tableViewCell>

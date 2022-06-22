@@ -11,8 +11,10 @@ import Kingfisher
 class NewTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var subView: UIView!
     
     @IBOutlet weak var bookImage: UIImageView!
+    
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookSubTitle: UILabel!
     @IBOutlet weak var bookIsbn13: UILabel!
