@@ -17,7 +17,7 @@ class NewViewController : UIViewController {
     
     
     let dummy: [Book] = [
-        Book(title: "123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
+        Book(title: "123123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
     ]
     
     override func viewDidLoad() {
