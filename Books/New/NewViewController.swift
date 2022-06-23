@@ -17,7 +17,7 @@ class NewViewController : UIViewController {
     
     
     let dummy: [Book] = [
-        Book(title: "123123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
+        Book(title: "123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
     ]
     
     override func viewDidLoad() {
@@ -98,30 +98,28 @@ extension NewViewController {
 }
 
 extension NewViewController : UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 500
-//    }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 280
     }
     
     
+
 }
 
 extension NewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return bookList.count
-        return dummy.count
+        return bookList.count
+//        return dummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
         
-        //let book = bookList[indexPath.row]
+        let book = bookList[indexPath.row]
         
-        cell.configureView(with: dummy[0])
+//        cell.configureView(with: dummy[0])
+        cell.configureView(with: book)
         
         return cell
     }
