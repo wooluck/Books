@@ -12,9 +12,7 @@ class NewTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var subView: UIView!
-    
     @IBOutlet weak var bookImage: UIImageView!
-    
     @IBOutlet weak var bookTitle: UILabel!
     @IBOutlet weak var bookSubTitle: UILabel!
     @IBOutlet weak var bookIsbn13: UILabel!
@@ -22,6 +20,10 @@ class NewTableViewCell: UITableViewCell {
     
     
     @IBAction func bookLinkButton(_ sender: UIButton) {
+
+        // 사파리 어플 켜서 홈페이지 띄우기
+//        guard let url = URL(string: "www.naver.com"), UIApplication.shared.canOpenURL(url) else { return }
+//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     
@@ -41,7 +43,7 @@ class NewTableViewCell: UITableViewCell {
         layer.shadowColor = UIColor.black.cgColor
             layer.shadowOpacity = 0.5
             layer.shadowRadius = 20
-            contentView.layer.cornerRadius = 20
+            contentView.layer.cornerRadius = 30
             contentView.layer.masksToBounds = true
 
     }
@@ -57,33 +59,5 @@ class NewTableViewCell: UITableViewCell {
         
         selectionStyle = .none
     }
-    
-//    func getURLBookData() {
-//
-//        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-//
-//        // 네트워킹 시작
-//        let session = URLSession(configuration: .default)
-//
-//        session.dataTask(with: url) { data, response, error in
-//            guard let data = data, error == nil else { return }
-//
-//            // Json타입의 데이터를 디코딩
-//            let decoder = JSONDecoder()
-//            let bookResponse = try? decoder.decode(BookModel.self, from: data)
-//            self.books = BookModel.
-//
-//            guard let book = try? decoder.decode(BookModel.self, from: data) else { return }
-//            DispatchQueue.main.async {
-//                self.configureView(bookModel: book)
-//            }
-//
-//
-//        }
-//
-//
-//    }
-
-
 
 }

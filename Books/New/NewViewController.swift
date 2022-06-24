@@ -7,18 +7,36 @@
 
 import UIKit
 
+protocol SendDelegate: AnyObject {
+    func send(bookList: Book)
+    
+}
+
 class NewViewController : UIViewController {
+    
+    var delegate : SendDelegate?
     
     /// 책 모델 배열
     var bookList = [Book]()
     var dataTasks = [URLSessionTask]()
     
-    @IBOutlet weak var bookTableView: UITableView!
-    
     
     let dummy: [Book] = [
-        Book(title: "123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
+        Book(title: "123123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
     ]
+    
+    @IBOutlet weak var bookTableView: UITableView!
+    
+
+    
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +46,25 @@ class NewViewController : UIViewController {
         
         bookTableView.delegate = self
         bookTableView.dataSource = self
-//        bookTableView.register(NewTableViewCell.self, forCellReuseIdentifier: "NewCell")
-        
         fetchBook()
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? NewDetailViewController {
+            if let index = sender as? Int {
+//                vc.prepareTitle = "\(dummy[0].title)"
+                vc.prepareImage = "\(bookList[index].image)"
+                vc.prepareTitle = "\(bookList[index].title)"
+                vc.prepareSubTitle = "\(bookList[index].subtitle)"
+                vc.prepareIsbn13 = "\(bookList[index].isbn13)"
+                vc.preparePrice = "\(bookList[index].price)"
+                vc.prepareLink = "\(bookList[index].url)"
+                
+            }
+        }
     }
 }
 
-/*
- 
- */
 // MARK: - Extension
 
 extension NewViewController {
@@ -65,7 +91,7 @@ extension NewViewController {
         
                 
                 self.bookList = book.books
-//
+
                 DispatchQueue.main.async {
                     self.bookTableView.reloadData()
                 }
@@ -102,19 +128,16 @@ extension NewViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280
     }
-    
-    
-
 }
 
 extension NewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookList.count
-//        return dummy.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
+        
         
         let book = bookList[indexPath.row]
         
@@ -124,13 +147,10 @@ extension NewViewController : UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedBook = bookList[indexPath.row]
-//        let newDetailViewController = NewDetailViewController()
-//
-//        newDetailViewController.book = selectedBook
-//        self.show(newDetailViewController, sender: nil)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
+        
+    }
 }
 
 
