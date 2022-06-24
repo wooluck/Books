@@ -108,7 +108,6 @@
                                             <outlet property="bookSubTitle" destination="J7Z-ZK-tnx" id="q71-7Q-bPx"/>
                                             <outlet property="bookTitle" destination="42L-MW-1Wn" id="3N9-2c-ePk"/>
                                             <outlet property="subView" destination="DxJ-ms-KX2" id="uIz-05-82U"/>
-                                            <segue destination="HbA-Sz-GOb" kind="show" identifier="PassDetailVC" id="YLw-Ge-YuX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -126,6 +125,7 @@
                     <navigationItem key="navigationItem" id="jH8-gg-cMh"/>
                     <connections>
                         <outlet property="bookTableView" destination="hUN-h8-DZp" id="dtg-gn-P13"/>
+                        <segue destination="HbA-Sz-GOb" kind="show" identifier="PassDetailVC" id="Hcb-jO-85U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -249,10 +249,36 @@
                     <view key="view" contentMode="scaleToFill" id="VLo-tT-7n4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4DT-CP-ZWo">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kzo-JY-3ub">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzo-JY-3ub" id="7Oy-Iu-ihL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="bhm-HP-0h6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bhm-HP-0h6" firstAttribute="bottom" secondItem="4DT-CP-ZWo" secondAttribute="bottom" id="3EO-A5-kyC"/>
+                            <constraint firstItem="bhm-HP-0h6" firstAttribute="trailing" secondItem="4DT-CP-ZWo" secondAttribute="trailing" id="CrN-ZX-wkN"/>
+                            <constraint firstItem="4DT-CP-ZWo" firstAttribute="leading" secondItem="bhm-HP-0h6" secondAttribute="leading" id="TVi-5T-Oo6"/>
+                            <constraint firstItem="4DT-CP-ZWo" firstAttribute="top" secondItem="bhm-HP-0h6" secondAttribute="top" id="yfN-iH-rfN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N3B-Gc-b16"/>
+                    <connections>
+                        <outlet property="searchTable" destination="4DT-CP-ZWo" id="CBM-9o-y0h"/>
+                        <outlet property="searchTableView" destination="4DT-CP-ZWo" id="Kgp-bg-dQo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0G-32-uXf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

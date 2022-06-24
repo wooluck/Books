@@ -22,10 +22,6 @@ class NewDetailViewController: UIViewController {
     var prepareLink: String?
     
     
-    
-    // 이렇게 셀자체를 가져올수가 있는지
-    let newTableViewCell = NewTableViewCell()
-    
     @IBOutlet weak var bookDetailImage: UIImageView!
     @IBOutlet weak var bookDetailTitle: UILabel!
     @IBOutlet weak var bookDetailSubTitle: UILabel!
@@ -40,37 +36,28 @@ class NewDetailViewController: UIViewController {
         
         print("NewDetailViewController - viewDidLoad - called")
         
+        // 네비게이션바
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
+        // 탭바컨트롤 삭제
         self.tabBarController?.tabBar.isHidden = true
         
+        // 텍스트뷰 테두리
         bookDetailTextView.layer.borderWidth = 1.0
         bookDetailTextView.layer.borderColor = UIColor.systemGray5.cgColor
         bookDetailTextView.layer.cornerRadius = 7
         
+        // 데이터 넣기
         bookDetailTitle.text = prepareTitle ?? "NoTitle"
         bookDetailSubTitle.text = prepareSubTitle ?? "NoSubTitle"
         bookDetailIsbn13.text = prepareIsbn13 ?? "NoIsbn13"
         bookDetailPrice.text = preparePrice ?? "NoPrice"
-        print("prepareImage - \(prepareImage)")
         let imageURL = URL(string: prepareImage ?? "NoImage")
         bookDetailImage.kf.setImage(with: imageURL)
         bookDetailLinkButton.setTitle(prepareLink, for: .normal)
         
-        bookDetailTextView.delegate = self
         
-        
-        
-        
-        
-        
-//        let imageURL = URL(string: book.books.image)
-//        bookDetailImage.kf.setImage(with: imageURL)
-//        bookDetailTitle.text = book.title
-//        bookDetailSubTitle.text = book.subtitle
-//        bookDetailIsbn13.text = book.isbn13
-//        bookDetailPrice.text = book.price
     }
     
     // MARK: 뷰 생명주기
@@ -100,23 +87,5 @@ class NewDetailViewController: UIViewController {
         
         print("NewDetailViewController - viewDidDisappear - called")
         
-    }
-}
-
-// MARK: Extension
-extension NewDetailViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Placeholder"
-            textView.textColor = UIColor.lightGray
-        }
     }
 }

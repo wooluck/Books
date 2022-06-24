@@ -7,36 +7,21 @@
 
 import UIKit
 
-protocol SendDelegate: AnyObject {
-    func send(bookList: Book)
-    
-}
-
 class NewViewController : UIViewController {
-    
-    var delegate : SendDelegate?
     
     /// 책 모델 배열
     var bookList = [Book]()
     var dataTasks = [URLSessionTask]()
     
-    
-    let dummy: [Book] = [
-        Book(title: "123123", subtitle: "123", isbn13: "123", price: "123", image: "123", url: "123")
-    ]
-    
     @IBOutlet weak var bookTableView: UITableView!
     
 
-    
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +34,10 @@ class NewViewController : UIViewController {
         fetchBook()
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? NewDetailViewController {
             if let index = sender as? Int {
-//                vc.prepareTitle = "\(dummy[0].title)"
                 vc.prepareImage = "\(bookList[index].image)"
                 vc.prepareTitle = "\(bookList[index].title)"
                 vc.prepareSubTitle = "\(bookList[index].subtitle)"
@@ -67,6 +52,7 @@ class NewViewController : UIViewController {
 
 // MARK: - Extension
 
+// API Session 사용
 extension NewViewController {
     func fetchBook() {
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
@@ -137,17 +123,14 @@ extension NewViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
-        
-        
         let book = bookList[indexPath.row]
-        
-//        cell.configureView(with: dummy[0])
         cell.configureView(with: book)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
         
     }

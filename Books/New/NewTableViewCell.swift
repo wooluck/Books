@@ -48,6 +48,7 @@ class NewTableViewCell: UITableViewCell {
 
     }
     
+    // 가져온 데이터 넣기
     func configureView(with bookModel: Book) {
 
         let imageURL = URL(string: bookModel.image )
