@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchViewController : UIViewController {
     
-    private var bookList = [Book]()
+    var bookList = [Book]()
     var dataTasks = [URLSessionTask]()
     
     let searchController = UISearchController()
@@ -27,8 +28,9 @@ class SearchViewController : UIViewController {
         
         searchTableView.dataSource = self
         searchTableView.delegate = self
-        fetchBook()
-        print("bookListSearch - \(bookList.count)")
+//        fetchBook()
+        
+        requestBookName()
     }
 }
 
@@ -36,6 +38,23 @@ class SearchViewController : UIViewController {
 // MARK: Extension
 
 extension SearchViewController {
+    
+    // Alamofire 한번 이용해보기
+    func requestBookName() {
+        let urlString =  "https://api.itbook.store/1.0/search/{query}/1"
+        
+        AF
+            .request(urlString)
+            .responseDecodable(of: BookModel.self) { response in
+                guard case .success(let data) = response.result else { return }
+                
+                print("이거이거이거 - \(data.books)")
+                self.searchTableView.reloadData()
+            }
+            .resume()
+    }
+    
+    
     func fetchBook() {
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
         
@@ -89,6 +108,9 @@ extension SearchViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        
+        
         searchTableView.reloadData()
     }
 }
