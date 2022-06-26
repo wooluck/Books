@@ -58,34 +58,6 @@ class NewDetailViewController: UIViewController {
         bookDetailLinkButton.setTitle(prepareLink, for: .normal)
         
         
-    }
-    
-    // MARK: 뷰 생명주기
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print("NewDetailViewController - viewWillAppear - called")
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print("NewDetailViewController - viewDidAppear - called")
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        print("NewDetailViewController - viewWillDisappear - called")
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        print("NewDetailViewController - viewDidDisappear - called")
         
     }
 }

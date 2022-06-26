@@ -32,6 +32,7 @@ class NewViewController : UIViewController {
         bookTableView.delegate = self
         bookTableView.dataSource = self
         fetchBook()
+        
     }
     
     
@@ -71,13 +72,9 @@ extension NewViewController {
                   }
             switch response.statusCode {
             case (200...299):
-                
-                
                 print("Success: \(response.statusCode)")
-        
-                
                 self.bookList = book.books
-
+                
                 DispatchQueue.main.async {
                     self.bookTableView.reloadData()
                 }
@@ -106,6 +103,7 @@ extension NewViewController {
         }
         dataTask.resume()
         dataTasks.append(dataTask)
+        
     }
 }
 
@@ -113,6 +111,12 @@ extension NewViewController : UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
+        
     }
 }
 
@@ -129,11 +133,7 @@ extension NewViewController : UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
-        
-    }
+    
 }
 
 
