@@ -31,15 +31,29 @@ class NewDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationSetting()
+        textViewLayer()
+        dataGet()
+        
+    }
+    
+    // MARK: Functions
+    /// navigation, tabbar
+    func navigationSetting() {
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tabBarController?.tabBar.isHidden = true
-        
-        
+    }
+    
+    /// layer 관련 코드
+    func textViewLayer() {
         bookDetailTextView.layer.borderWidth = 1.0
         bookDetailTextView.layer.borderColor = UIColor.systemGray5.cgColor
         bookDetailTextView.layer.cornerRadius = 7
-        
+    }
+    
+    
+    func dataGet() {
         let imageURL = URL(string: prepareImage ?? "NoImage")
         bookDetailImage.kf.setImage(with: imageURL)
         bookDetailTitle.text = prepareTitle ?? "NoTitle"
@@ -47,6 +61,5 @@ class NewDetailViewController: UIViewController {
         bookDetailIsbn13.text = prepareIsbn13 ?? "NoIsbn13"
         bookDetailPrice.text = preparePrice ?? "NoPrice"
         bookDetailLinkButton.setTitle(prepareLink, for: .normal)
-        
     }
 }

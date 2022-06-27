@@ -26,11 +26,15 @@ class NewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-        // 테이블 뷰 셀 사이의 간격
+        viewSizeAndLayer()
+    }
+    
+    // MARK: - Functions
+    
+    /// 테이블 뷰 셀 사이의 간격, 그림자, 셀 둥글게
+    func viewSizeAndLayer() {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 14, right: 0))
         
-        // 그림자, 셀 둥글게
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowRadius = 20

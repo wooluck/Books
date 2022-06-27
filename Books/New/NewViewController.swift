@@ -23,13 +23,22 @@ class NewViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationAndTableViewSet()
+        fetchBook()
+        
+    }
+    
+    // MARK: - Functions
+    
+    /// navigation 설정, tableview 프로토콜 설정
+    func navigationAndTableViewSet() {
         self.navigationItem.title = "New Books"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         bookTableView.delegate = self
         bookTableView.dataSource = self
-        fetchBook()
     }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,7 +56,6 @@ class NewViewController : UIViewController {
 }
 
 // MARK: - Extension
-
 
 extension NewViewController {
     /// API Session 사용

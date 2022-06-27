@@ -21,6 +21,8 @@ class SearchDetailTableViewCell: UITableViewCell {
         super.layoutSubviews()
     }
     
+    // MARK: - Functions
+    
     /// 가져온 데이터 대입
     func configureView(with bookModel: Book) {
 

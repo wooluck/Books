@@ -30,7 +30,6 @@ class SearchViewController : UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.tabBarController?.tabBar.isHidden = false
         
     }
@@ -38,15 +37,25 @@ class SearchViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        naviagationSetting()
+        searchBarAndTableViewSetting()
+        fetchBook()
+    }
+    
+    // MARK: - Functions
+    /// navigationItem 관련 소스
+    func naviagationSetting() {
         self.navigationItem.title = "Search Books"
         self.navigationItem.searchController = searchController
+    }
+    
+    /// searchbar, tableview 프로토콜, 검색결과x Label
+    func searchBarAndTableViewSetting() {
         searchController.searchBar.placeholder = "검색어를 입력해보세요."
         searchController.searchResultsUpdater = self
         searchTableView.dataSource = self
         searchTableView.delegate = self
         noSearch.isHidden = true
-        
-        fetchBook()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -68,18 +77,18 @@ class SearchViewController : UIViewController {
 
 extension SearchViewController {
     
-    /// Alamofire 한번 이용해보기
-    func requestBookName() {
-        let urlString =  "https://api.itbook.store/1.0/search/{query}/1"
-        
-        AF
-            .request(urlString)
-            .responseDecodable(of: BookModel.self) { response in
-                guard case .success(let data) = response.result else { return }
-                self.searchTableView.reloadData()
-            }
-            .resume()
-    }
+    // TODO: Alamofire 한번 이용해보기
+//    func requestBookName() {
+//        let urlString =  "https://api.itbook.store/1.0/search/{query}/1"
+//
+//        AF
+//            .request(urlString)
+//            .responseDecodable(of: BookModel.self) { response in
+//                guard case .success(let data) = response.result else { return }
+//                self.searchTableView.reloadData()
+//            }
+//            .resume()
+//    }
     
     /// URLSession 이용
     func fetchBook() {
