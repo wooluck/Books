@@ -8,8 +8,6 @@
 import UIKit
 import Kingfisher
 
-
-
 class NewDetailViewController: UIViewController {
     
     var book = [Book]()
@@ -20,7 +18,6 @@ class NewDetailViewController: UIViewController {
     var prepareIsbn13: String?
     var preparePrice: String?
     var prepareLink: String?
-    
     
     @IBOutlet weak var bookDetailImage: UIImageView!
     @IBOutlet weak var bookDetailTitle: UILabel!
@@ -34,30 +31,22 @@ class NewDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("NewDetailViewController - viewDidLoad - called")
-        
-        // 네비게이션바
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // 탭바컨트롤 삭제
         self.tabBarController?.tabBar.isHidden = true
         
-        // 텍스트뷰 테두리
+        
         bookDetailTextView.layer.borderWidth = 1.0
         bookDetailTextView.layer.borderColor = UIColor.systemGray5.cgColor
         bookDetailTextView.layer.cornerRadius = 7
         
-        // 데이터 넣기
+        let imageURL = URL(string: prepareImage ?? "NoImage")
+        bookDetailImage.kf.setImage(with: imageURL)
         bookDetailTitle.text = prepareTitle ?? "NoTitle"
         bookDetailSubTitle.text = prepareSubTitle ?? "NoSubTitle"
         bookDetailIsbn13.text = prepareIsbn13 ?? "NoIsbn13"
         bookDetailPrice.text = preparePrice ?? "NoPrice"
-        let imageURL = URL(string: prepareImage ?? "NoImage")
-        bookDetailImage.kf.setImage(with: imageURL)
         bookDetailLinkButton.setTitle(prepareLink, for: .normal)
-        
-        
         
     }
 }

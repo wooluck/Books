@@ -19,11 +19,9 @@ class SearchDetailTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-                
-        
     }
     
-    // 가져온 데이터 넣기
+    /// 가져온 데이터 대입
     func configureView(with bookModel: Book) {
 
         let imageURL = URL(string: bookModel.image )
@@ -33,8 +31,7 @@ class SearchDetailTableViewCell: UITableViewCell {
         searchBookIsbn13.text = bookModel.isbn13
         searchBookPrice.text = bookModel.price
         searchBookLinkButton.text = bookModel.url
+        
         selectionStyle = .none
     }
-
-    
 }

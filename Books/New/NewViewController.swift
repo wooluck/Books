@@ -11,17 +11,14 @@ class NewViewController : UIViewController {
     
     /// 책 모델 배열
     var bookList = [Book]()
-    var dataTasks = [URLSessionTask]()
     
     @IBOutlet weak var bookTableView: UITableView!
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +29,6 @@ class NewViewController : UIViewController {
         bookTableView.delegate = self
         bookTableView.dataSource = self
         fetchBook()
-        
     }
     
     
@@ -45,7 +41,6 @@ class NewViewController : UIViewController {
                 vc.prepareIsbn13 = "\(bookList[index].isbn13)"
                 vc.preparePrice = "\(bookList[index].price)"
                 vc.prepareLink = "\(bookList[index].url)"
-                
             }
         }
     }
@@ -53,8 +48,9 @@ class NewViewController : UIViewController {
 
 // MARK: - Extension
 
-// API Session 사용
+
 extension NewViewController {
+    /// API Session 사용
     func fetchBook() {
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
         
@@ -66,14 +62,14 @@ extension NewViewController {
                   let self = self,
                   let response = response as? HTTPURLResponse,
                   let data = data,
-                  let book = try? JSONDecoder().decode(BookModel.self, from: data) else {
+                  let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
                       print("ERROR : \(error?.localizedDescription)")
                       return
                   }
             switch response.statusCode {
             case (200...299):
                 print("Success: \(response.statusCode)")
-                self.bookList = book.books
+                self.bookList = bookData.books
                 
                 DispatchQueue.main.async {
                     self.bookTableView.reloadData()
@@ -102,8 +98,6 @@ extension NewViewController {
             }
         }
         dataTask.resume()
-        dataTasks.append(dataTask)
-        
     }
 }
 
@@ -114,9 +108,7 @@ extension NewViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
-        
     }
 }
 
@@ -126,14 +118,12 @@ extension NewViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
-        let book = bookList[indexPath.row]
-        cell.configureView(with: book)
+        cell.configureView(with: bookList[indexPath.row])
         
         return cell
     }
-    
-    
 }
 
 

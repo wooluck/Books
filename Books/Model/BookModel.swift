@@ -14,12 +14,13 @@ struct BookModel: Codable {
 }
 
 struct Book: Codable {
-    let title: String
+    var title: String
     let subtitle: String
     let isbn13: String
     let price: String
     let image: String
     let url: String
 }
+
 
 
