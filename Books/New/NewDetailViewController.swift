@@ -44,8 +44,6 @@ class NewDetailViewController: UIViewController {
         bookDetailTextView.layer.cornerRadius = 7
         bookDetailTextView.delegate = self
          self.bookDetailTextView.text = "내용을 입력하세요"
-        
- 
     }
     
     private func configure(_ data: Book?) {
@@ -67,23 +65,18 @@ extension NewDetailViewController: UITextViewDelegate {
         if textView.textColor == UIColor.lightGray{
             textView.text = "내용을 입력하세요"
             textView.textColor = UIColor.lightGray
-                    
-                } else {
-                    textView.text = ""
-                    textView.textColor = UIColor.darkGray
-                }
-        
+        } else {
+        textView.text = ""
+        textView.textColor = UIColor.darkGray
     }
+}
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.count == 0 {
-                    textView.text = "내용을 입력하세요"
-                    textView.textColor = UIColor.lightGray
-                } else {
-                    textView.textColor = UIColor.darkGray
-                }
-        
+            textView.text = "내용을 입력하세요"
+            textView.textColor = UIColor.lightGray
+        } else {
+            textView.textColor = UIColor.darkGray
+        }
     }
-    
-
 }
