@@ -22,16 +22,15 @@ class SearchViewController : UIViewController {
         return isActive && isSearchBarHasText
     }
     
-    let searchController = UISearchController()
-    
+    let searchController = UISearchController(searchResultsController: nil)
+
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        
+
     }
     
     override func viewDidLoad() {
@@ -61,12 +60,7 @@ class SearchViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? NewDetailViewController {
             if let index = sender as? Int {
-                vc.prepareImage = "\(bookList[index].image)"
-                vc.prepareTitle = "\(bookList[index].title)"
-                vc.prepareSubTitle = "\(bookList[index].subtitle)"
-                vc.prepareIsbn13 = "\(bookList[index].isbn13)"
-                vc.preparePrice = "\(bookList[index].price)"
-                vc.prepareLink = "\(bookList[index].url)"
+                vc.prepareBook = bookList[index]
             }
         }
     }
@@ -76,19 +70,6 @@ class SearchViewController : UIViewController {
 // MARK: Extension
 
 extension SearchViewController {
-    
-    // TODO: Alamofire 한번 이용해보기
-//    func requestBookName() {
-//        let urlString =  "https://api.itbook.store/1.0/search/{query}/1"
-//
-//        AF
-//            .request(urlString)
-//            .responseDecodable(of: BookModel.self) { response in
-//                guard case .success(let data) = response.result else { return }
-//                self.searchTableView.reloadData()
-//            }
-//            .resume()
-//    }
     
     /// URLSession 이용
     func fetchBook() {
@@ -174,20 +155,12 @@ extension SearchViewController: UITableViewDataSource {
         
         if self.isFiltering {
             if filteredData.count != 0 {
-            
-            let imageURL = URL(string: filteredData[indexPath.row].image )
-            cell.searchBookImage.kf.setImage(with: imageURL)
-            cell.searchBookTitle.text = self.filteredData[indexPath.row].title
-            cell.searchBookSubTitle.text = self.filteredData[indexPath.row].subtitle
-            cell.searchBookIsbn13.text = self.filteredData[indexPath.row].isbn13
-            cell.searchBookPrice.text = self.filteredData[indexPath.row].price
-            cell.searchBookLinkButton.text = self.filteredData[indexPath.row].url
-                
-            self.noSearch.isHidden = true
+                cell.configureView(with: filteredData[indexPath.row])
+                self.noSearch.isHidden = true
             }
         } else {
-            cell.configureView(with: bookList[indexPath.row])
-            self.noSearch.isHidden = true
+                cell.configureView(with: bookList[indexPath.row])
+                self.noSearch.isHidden = true
         }
         return cell
     }

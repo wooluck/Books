@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 
 class NewTableViewCell: UITableViewCell {
+
     
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var bookImage: UIImageView!
@@ -45,12 +46,11 @@ class NewTableViewCell: UITableViewCell {
     /// 가져온 데이터 mapping
     func configureView(with bookModel: Book) {
 
-        let imageURL = URL(string: bookModel.image)
+//        let imageURL = URL(string: bookModel.image)
         if let url = URL(string: bookModel.image) {
             bookImage.kf.setImage(with: url)
         } else {
             print("Image URL Not Failed")
-            //bookImage.kf.setImage(with: url)
         }
        
         bookTitle.text = bookModel.title

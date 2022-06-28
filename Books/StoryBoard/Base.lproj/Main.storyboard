@@ -136,7 +136,7 @@
         <!--New Detail View Controller-->
         <scene sceneID="lli-k7-uCz">
             <objects>
-                <viewController storyboardIdentifier="NewDetailViewController" id="HbA-Sz-GOb" customClass="NewDetailViewController" customModule="Books" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewDetailViewController" hidesBottomBarWhenPushed="YES" id="HbA-Sz-GOb" customClass="NewDetailViewController" customModule="Books" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PRd-GW-v00">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,10 +183,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="내용을 입력하세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gew-Ns-h4i">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gew-Ns-h4i">
                                 <rect key="frame" x="35" y="536" width="344" height="339"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="systemGray3Color"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -270,7 +270,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eU-KC-MzM">
-                                                    <rect key="frame" x="130" y="24.5" width="264" height="25.5"/>
+                                                    <rect key="frame" x="130" y="18.5" width="264" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -317,7 +317,7 @@
                                                 <constraint firstItem="TS4-0w-eai" firstAttribute="top" secondItem="T3Q-oR-O3R" secondAttribute="bottom" constant="2" id="raR-gb-dc2"/>
                                                 <constraint firstItem="T3Q-oR-O3R" firstAttribute="leading" secondItem="Fcc-cx-Twv" secondAttribute="trailing" constant="20" id="rbN-Yy-GL4"/>
                                                 <constraint firstItem="nBv-9k-Yx9" firstAttribute="top" secondItem="TS4-0w-eai" secondAttribute="bottom" constant="2" id="vVQ-Nx-WkC"/>
-                                                <constraint firstItem="T3Q-oR-O3R" firstAttribute="top" secondItem="6eU-KC-MzM" secondAttribute="bottom" constant="4" id="vXC-6g-DA7"/>
+                                                <constraint firstItem="T3Q-oR-O3R" firstAttribute="top" secondItem="6eU-KC-MzM" secondAttribute="bottom" constant="10" id="vXC-6g-DA7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -422,7 +422,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e6t-9Z-uCd"/>
+        <segue reference="Hcb-jO-85U"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
@@ -433,9 +433,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

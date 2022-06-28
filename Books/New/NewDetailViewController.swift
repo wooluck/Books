@@ -10,14 +10,7 @@ import Kingfisher
 
 class NewDetailViewController: UIViewController {
     
-    var book = [Book]()
-    
-    var prepareImage: String?
-    var prepareTitle: String?
-    var prepareSubTitle: String?
-    var prepareIsbn13: String?
-    var preparePrice: String?
-    var prepareLink: String?
+    var prepareBook: Book?
     
     @IBOutlet weak var bookDetailImage: UIImageView!
     @IBOutlet weak var bookDetailTitle: UILabel!
@@ -32,34 +25,65 @@ class NewDetailViewController: UIViewController {
         super.viewDidLoad()
         
         navigationSetting()
-        textViewLayer()
-        dataGet()
+        textView()
         
+        configure(prepareBook)
     }
     
     // MARK: Functions
-    /// navigation, tabbar
-    func navigationSetting() {
+    /// navigationItem
+    private func navigationSetting() {
         self.navigationItem.title = "Detail Book"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.tabBarController?.tabBar.isHidden = true
     }
     
     /// layer 관련 코드
-    func textViewLayer() {
+     func textView() {
         bookDetailTextView.layer.borderWidth = 1.0
         bookDetailTextView.layer.borderColor = UIColor.systemGray5.cgColor
         bookDetailTextView.layer.cornerRadius = 7
+        bookDetailTextView.delegate = self
+         self.bookDetailTextView.text = "내용을 입력하세요"
+        
+ 
     }
     
-    
-    func dataGet() {
-        let imageURL = URL(string: prepareImage ?? "NoImage")
+    private func configure(_ data: Book?) {
+        let imageURL = URL(string: data?.image ?? "NoImage")
         bookDetailImage.kf.setImage(with: imageURL)
-        bookDetailTitle.text = prepareTitle ?? "NoTitle"
-        bookDetailSubTitle.text = prepareSubTitle ?? "NoSubTitle"
-        bookDetailIsbn13.text = prepareIsbn13 ?? "NoIsbn13"
-        bookDetailPrice.text = preparePrice ?? "NoPrice"
-        bookDetailLinkButton.setTitle(prepareLink, for: .normal)
+        bookDetailTitle.text = data?.title ?? "NoTitle"
+        bookDetailSubTitle.text = data?.subtitle ?? "NoSubTitle"
+        bookDetailIsbn13.text = data?.isbn13 ?? "NoIsbn13"
+        bookDetailPrice.text = data?.price ?? "NoPrice"
+        bookDetailLinkButton.setTitle(data?.url, for: .normal)
     }
+}
+
+// MARK: - Extenstions
+
+extension NewDetailViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray{
+            textView.text = "내용을 입력하세요"
+            textView.textColor = UIColor.lightGray
+                    
+                } else {
+                    textView.text = ""
+                    textView.textColor = UIColor.darkGray
+                }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.count == 0 {
+                    textView.text = "내용을 입력하세요"
+                    textView.textColor = UIColor.lightGray
+                } else {
+                    textView.textColor = UIColor.darkGray
+                }
+        
+    }
+    
+
 }

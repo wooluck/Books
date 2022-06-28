@@ -10,6 +10,8 @@ import Kingfisher
 
 class SearchDetailTableViewCell: UITableViewCell {
     
+    var preparebook: Book?
+    
     @IBOutlet weak var searchBookImage: UIImageView!
     @IBOutlet weak var searchBookTitle: UILabel!
     @IBOutlet weak var searchBookSubTitle: UILabel!
@@ -36,4 +38,6 @@ class SearchDetailTableViewCell: UITableViewCell {
         
         selectionStyle = .none
     }
+    
+    
 }

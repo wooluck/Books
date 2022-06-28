@@ -17,7 +17,6 @@ class NewViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
@@ -44,12 +43,7 @@ class NewViewController : UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? NewDetailViewController {
             if let index = sender as? Int {
-                vc.prepareImage = "\(bookList[index].image)"
-                vc.prepareTitle = "\(bookList[index].title)"
-                vc.prepareSubTitle = "\(bookList[index].subtitle)"
-                vc.prepareIsbn13 = "\(bookList[index].isbn13)"
-                vc.preparePrice = "\(bookList[index].price)"
-                vc.prepareLink = "\(bookList[index].url)"
+                vc.prepareBook = bookList[index]
             }
         }
     }
@@ -128,6 +122,7 @@ extension NewViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
+        
         cell.configureView(with: bookList[indexPath.row])
         
         return cell
