@@ -73,9 +73,11 @@ extension SearchViewController {
     
     /// URLSession 이용
     func fetchBook() {
+         // 1
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
         
         var request = URLRequest(url: url)
+        //2
         request.httpMethod = "GET"
         
         let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
@@ -83,12 +85,13 @@ extension SearchViewController {
                   let self = self,
                   let response = response as? HTTPURLResponse,
                   let data = data,
+                  // 3
                   let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
                       print("ERROR : \(error?.localizedDescription)")
                       return
                   }
             switch response.statusCode {
-            case (200...299):
+            case (200...299): //4 .탈출클로저
                 print("Success: \(response.statusCode)")
                 self.bookList = bookData.books
 
@@ -163,5 +166,14 @@ extension SearchViewController: UITableViewDataSource {
                 self.noSearch.isHidden = true
         }
         return cell
+    }
+}
+
+
+class TestClosure {
+    var completionhandler: ((String) -> Void)? = nil
+    
+    func fetchData(completion: @escaping (String) -> Void) {
+        completionhandler = completion
     }
 }

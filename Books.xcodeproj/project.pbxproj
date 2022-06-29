@@ -19,6 +19,7 @@
 		C376B0B728618F430050FA74 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B628618F430050FA74 /* BookModel.swift */; };
 		C376B0B92861A6F40050FA74 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */; };
 		C3A72705286ABE51000A58E7 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A72704286ABE51000A58E7 /* URLSessionExtension.swift */; };
+		C3A72708286AFAB5000A58E7 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */; };
 		C3CB4FCC2869472600126696 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3CB4FCB2869472600126696 /* Kingfisher */; };
 		C3CB4FCF2869475C00126696 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C3CB4FCE2869475C00126696 /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		C376B0B628618F430050FA74 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		C3A72704286ABE51000A58E7 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
+		C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A72704286ABE51000A58E7 /* URLSessionExtension.swift */,
+				C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			files = (
 				C376B0AF2861802E0050FA74 /* SearchViewController.swift in Sources */,
 				C376B0B728618F430050FA74 /* BookModel.swift in Sources */,
+				C3A72708286AFAB5000A58E7 /* ImageViewExtension.swift in Sources */,
 				C376B09928617F350050FA74 /* AppDelegate.swift in Sources */,
 				C376B09B28617F350050FA74 /* SceneDelegate.swift in Sources */,
 				C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */,

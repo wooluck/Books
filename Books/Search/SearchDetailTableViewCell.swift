@@ -29,7 +29,11 @@ class SearchDetailTableViewCell: UITableViewCell {
     func configureView(with bookModel: Book) {
 
         let imageURL = URL(string: bookModel.image )
-        searchBookImage.kf.setImage(with: imageURL)
+        searchBookImage.load(url: imageURL!)
+        
+//        let imageData = try! Data(contentsOf: imageURL!)
+//        searchBookImage.image = UIImage(data: imageData)
+//        searchBookImage.kf.setImage(with: imageURL)
         searchBookTitle.text = bookModel.title
         searchBookSubTitle.text = bookModel.subtitle
         searchBookIsbn13.text = bookModel.isbn13

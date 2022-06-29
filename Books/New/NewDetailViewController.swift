@@ -48,7 +48,11 @@ class NewDetailViewController: UIViewController {
     
     private func configure(_ data: Book?) {
         let imageURL = URL(string: data?.image ?? "NoImage")
-        bookDetailImage.kf.setImage(with: imageURL)
+        bookDetailImage.load(url: imageURL!)
+//        let imageData = try! Data(contentsOf: imageURL!)
+//        bookDetailImage.image = UIImage(data: imageData)
+        
+//        bookDetailImage.kf.setImage(with: imageURL)
         bookDetailTitle.text = data?.title ?? "NoTitle"
         bookDetailSubTitle.text = data?.subtitle ?? "NoSubTitle"
         bookDetailIsbn13.text = data?.isbn13 ?? "NoIsbn13"

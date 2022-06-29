@@ -48,7 +48,10 @@ class NewTableViewCell: UITableViewCell {
 
 //        let imageURL = URL(string: bookModel.image)
         if let url = URL(string: bookModel.image) {
-            bookImage.kf.setImage(with: url)
+            bookImage.load(url: url)
+//            bookImage.kf.setImage(with: url)
+            let imageData = try! Data(contentsOf: url)
+            bookImage.image = UIImage(data: imageData)
         } else {
             print("Image URL Not Failed")
         }

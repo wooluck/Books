@@ -11,6 +11,7 @@ class NewViewController : UIViewController {
     
     /// 책 모델 배열
     var bookList = [Book]()
+//    var urlSessionCode = UrlSessionCode()
     
     @IBOutlet weak var bookTableView: UITableView!
 
@@ -23,7 +24,25 @@ class NewViewController : UIViewController {
         super.viewDidLoad()
         
         navigationAndTableViewSet()
-        fetchBook()
+        //fetchBook()
+        
+
+        UrlSessionCode.urlSessionShared.fetchBook(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
+            
+            print("data Response: \(data)")
+
+            self?.bookList = data
+            
+        }
+        
+        
+//        bookList = UrlSessionCode.urlSessionShared.fetchBook(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get)
+        
+        
+
+        
+//        urlSessionCode.fetchBook()
+        
         
     }
     
@@ -55,10 +74,10 @@ extension NewViewController {
     /// API Session 사용
     func fetchBook() {
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        
+
         let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard error == nil,
                   let self = self,
@@ -68,39 +87,18 @@ extension NewViewController {
                       print("ERROR : \(error?.localizedDescription)")
                       return
                   }
-            switch response.statusCode {
-            case (200...299):
-                print("Success: \(response.statusCode)")
+            if response.statusCode <= 299{
+
                 self.bookList = bookData.books
-                
+
                 DispatchQueue.main.async {
                     self.bookTableView.reloadData()
                 }
-            case (400...499):
-                print(
-                    """
-                    ERROR: Client ERROR \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
-            case (500...599):
-                print(
-                    """
-                    ERROR: Server ERROR \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
-            default:
-                print(
-                    """
-                    ERROR: \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
             }
         }
         dataTask.resume()
     }
+
 }
 
 extension NewViewController : UITableViewDelegate {
