@@ -73,11 +73,9 @@ extension SearchViewController {
     
     /// URLSession 이용
     func fetchBook() {
-         // 1
         guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
         
         var request = URLRequest(url: url)
-        //2
         request.httpMethod = "GET"
         
         let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in

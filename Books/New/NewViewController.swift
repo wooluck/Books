@@ -11,8 +11,7 @@ class NewViewController : UIViewController {
     
     /// 책 모델 배열
     var bookList = [Book]()
-//    var urlSessionCode = UrlSessionCode()
-    
+//    var urlSessionCode = NetworkManager()
     @IBOutlet weak var bookTableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -24,26 +23,15 @@ class NewViewController : UIViewController {
         super.viewDidLoad()
         
         navigationAndTableViewSet()
-        //fetchBook()
+//        getBookList()
         
-
-        UrlSessionCode.urlSessionShared.fetchBook(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
-            
-            print("data Response: \(data)")
-
+        NetworkManager.shared.getBookList(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
+            print("리얼data Response: \(data)")
             self?.bookList = data
-            
+            DispatchQueue.main.sync {
+                self?.bookTableView.reloadData()
+            }
         }
-        
-        
-//        bookList = UrlSessionCode.urlSessionShared.fetchBook(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get)
-        
-        
-
-        
-//        urlSessionCode.fetchBook()
-        
-        
     }
     
     // MARK: - Functions
@@ -63,43 +51,13 @@ class NewViewController : UIViewController {
         if let vc = segue.destination as? NewDetailViewController {
             if let index = sender as? Int {
                 vc.prepareBook = bookList[index]
+//                vc.prepareIsbn13 = bookList[index]
             }
         }
     }
 }
 
 // MARK: - Extension
-
-extension NewViewController {
-    /// API Session 사용
-    func fetchBook() {
-        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-
-        let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            guard error == nil,
-                  let self = self,
-                  let response = response as? HTTPURLResponse,
-                  let data = data,
-                  let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
-                      print("ERROR : \(error?.localizedDescription)")
-                      return
-                  }
-            if response.statusCode <= 299{
-
-                self.bookList = bookData.books
-
-                DispatchQueue.main.async {
-                    self.bookTableView.reloadData()
-                }
-            }
-        }
-        dataTask.resume()
-    }
-
-}
 
 extension NewViewController : UITableViewDelegate {
         
@@ -122,6 +80,7 @@ extension NewViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as? NewTableViewCell else { return UITableViewCell() }
         
         cell.configureView(with: bookList[indexPath.row])
+        
         
         return cell
     }

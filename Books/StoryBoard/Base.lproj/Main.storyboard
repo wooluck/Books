@@ -166,13 +166,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office 2021 and Microsoft 365" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUy-lz-hUx">
-                                <rect key="frame" x="35" y="409" width="202" height="17"/>
+                                <rect key="frame" x="35" y="409" width="344" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Microsof Excel Inside Out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV2-nU-dJA">
-                                <rect key="frame" x="35" y="382" width="218" height="22"/>
+                                <rect key="frame" x="35" y="382" width="344" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -212,10 +212,12 @@
                             <constraint firstItem="j0h-nO-6tL" firstAttribute="top" secondItem="sGF-Kp-D7X" secondAttribute="top" id="BEE-OO-qlv"/>
                             <constraint firstItem="gOw-Yh-ZoC" firstAttribute="top" secondItem="tv9-2G-Pog" secondAttribute="bottom" constant="10" id="But-dE-UPI"/>
                             <constraint firstItem="UUy-lz-hUx" firstAttribute="top" secondItem="DV2-nU-dJA" secondAttribute="bottom" constant="5" id="C1g-x7-5X7"/>
+                            <constraint firstItem="sGF-Kp-D7X" firstAttribute="trailing" secondItem="UUy-lz-hUx" secondAttribute="trailing" constant="35" id="Fed-6D-Uc9"/>
                             <constraint firstAttribute="bottom" secondItem="Gew-Ns-h4i" secondAttribute="bottom" constant="21" id="OGo-IA-DjG"/>
                             <constraint firstItem="sGF-Kp-D7X" firstAttribute="trailing" secondItem="z7A-co-gMq" secondAttribute="trailing" constant="35" id="Qgs-vb-vyn"/>
                             <constraint firstItem="pcg-h5-JnL" firstAttribute="top" secondItem="UUy-lz-hUx" secondAttribute="bottom" constant="5" id="RlD-0b-H1W"/>
                             <constraint firstItem="z7A-co-gMq" firstAttribute="top" secondItem="gOw-Yh-ZoC" secondAttribute="bottom" constant="10" id="VCB-85-nFx"/>
+                            <constraint firstItem="sGF-Kp-D7X" firstAttribute="trailing" secondItem="DV2-nU-dJA" secondAttribute="trailing" constant="35" id="W7f-MQ-s1o"/>
                             <constraint firstItem="DV2-nU-dJA" firstAttribute="top" secondItem="j0h-nO-6tL" secondAttribute="bottom" constant="15" id="WYO-5M-0J4"/>
                             <constraint firstItem="DV2-nU-dJA" firstAttribute="leading" secondItem="sGF-Kp-D7X" secondAttribute="leading" constant="35" id="YNL-Vo-tsh"/>
                             <constraint firstItem="UUy-lz-hUx" firstAttribute="leading" secondItem="sGF-Kp-D7X" secondAttribute="leading" constant="35" id="bqt-ZT-atU"/>
