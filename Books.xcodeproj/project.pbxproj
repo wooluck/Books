@@ -22,6 +22,7 @@
 		C3A72708286AFAB5000A58E7 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */; };
 		C3A8A16B286E772B00D9DBA1 /* BookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A8A16A286E772B00D9DBA1 /* BookError.swift */; };
 		C3A8A16D286E843600D9DBA1 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A8A16C286E843600D9DBA1 /* WeatherModel.swift */; };
+		C3A8A16F286EEF4F00D9DBA1 /* SearchPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A8A16E286EEF4F00D9DBA1 /* SearchPreViewController.swift */; };
 		C3CB4FCC2869472600126696 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3CB4FCB2869472600126696 /* Kingfisher */; };
 		C3CB4FCF2869475C00126696 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C3CB4FCE2869475C00126696 /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		C3A8A16A286E772B00D9DBA1 /* BookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookError.swift; sourceTree = "<group>"; };
 		C3A8A16C286E843600D9DBA1 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		C3A8A16E286EEF4F00D9DBA1 /* SearchPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			children = (
 				C376B0AE2861802E0050FA74 /* SearchViewController.swift */,
 				7A380764286857F40031CCFE /* SearchDetailTableViewCell.swift */,
+				C3A8A16E286EEF4F00D9DBA1 /* SearchPreViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */,
 				C3A72705286ABE51000A58E7 /* NetworkManager.swift in Sources */,
 				C376B0B92861A6F40050FA74 /* NewTableViewCell.swift in Sources */,
+				C3A8A16F286EEF4F00D9DBA1 /* SearchPreViewController.swift in Sources */,
 				C376B0AD286180140050FA74 /* NewViewController.swift in Sources */,
 				7A380765286857F40031CCFE /* SearchDetailTableViewCell.swift in Sources */,
 				C3A8A16D286E843600D9DBA1 /* WeatherModel.swift in Sources */,

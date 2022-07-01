@@ -9,9 +9,10 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class SearchViewController : UIViewController, UISearchBarDelegate {
+class SearchViewController : UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
     
-    @IBOutlet weak var searchBar: UITableView!
+
+
     var bookList = [Book]()
     var filteredData = [Book]()
     var searchBarWord = ""
@@ -26,10 +27,11 @@ class SearchViewController : UIViewController, UISearchBarDelegate {
         return isActive && isSearchBarHasText
     }
     
-    let searchController = UISearchController(searchResultsController: nil)
+    //let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +41,7 @@ class SearchViewController : UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         naviagationSetting()
         searchBarAndTableViewSetting()
         
@@ -55,11 +57,32 @@ class SearchViewController : UIViewController, UISearchBarDelegate {
             }
         }
         
-//        searchBar.delegate = self
+//
         
     }
     
     // MARK: - Functions
+    
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        print("눌려따따따아앙아아")
+//    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("222눌려따따따아앙아아")
+
+    }
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        print("눌려따따따아앙아아")
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//
+    }
+    
+    
     /// navigationItem 관련 소스
     func naviagationSetting() {
         self.navigationItem.title = "Search Books"
