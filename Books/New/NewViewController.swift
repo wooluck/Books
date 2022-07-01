@@ -27,8 +27,7 @@ class NewViewController : UIViewController {
         navigationAndTableViewSet()
         
         NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { [weak self] (result : Result<BookModel,BookError>) in
-            
-            
+ 
             switch result {
             case .success(let data):
                 self?.bookList = data.books

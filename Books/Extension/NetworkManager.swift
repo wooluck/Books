@@ -112,26 +112,26 @@ class NetworkManager {
     }
     
     // MARK: SearchAPI
-    func getSearchBookList(apiURL: String, httpMethod: String = "get", completion: @escaping([Book]) -> Void) {
-        guard let url = URL(string: apiURL) else { print("url Error: \(apiURL)"); return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod =  httpMethod
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { print("URLSession data Error"); return }
-            guard let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
-                print("JSON ERROR : \(data)"); return }
-            guard error == nil else { print("error: \(error?.localizedDescription)"); return }
-            guard let response = response as? HTTPURLResponse else { print("response Error: \(response)"); return }
-            
-            if response.statusCode <= 299 {
-                completion(bookData.books)
-            }
-        }
-        dataTask.resume()
-        
-    }
+//    func getSearchBookList(apiURL: String, httpMethod: String = "get", completion: @escaping([Book]) -> Void) {
+//        guard let url = URL(string: apiURL) else { print("url Error: \(apiURL)"); return }
+//        
+//        var request = URLRequest(url: url)
+//        request.httpMethod =  httpMethod
+//        
+//        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else { print("URLSession data Error"); return }
+//            guard let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
+//                print("JSON ERROR : \(data)"); return }
+//            guard error == nil else { print("error: \(error?.localizedDescription)"); return }
+//            guard let response = response as? HTTPURLResponse else { print("response Error: \(response)"); return }
+//            
+//            if response.statusCode <= 299 {
+//                completion(bookData.books)
+//            }
+//        }
+//        dataTask.resume()
+//        
+//    }
 }
 
 

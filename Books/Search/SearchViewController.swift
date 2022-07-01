@@ -9,12 +9,15 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class SearchViewController : UIViewController {
+class SearchViewController : UIViewController, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UITableView!
     var bookList = [Book]()
     var filteredData = [Book]()
     var searchBarWord = ""
-
+    
+    fileprivate var newApi = "https://api.itbook.store/1.0/new"
+    
     /// SearchBar 활성화 여부, Text 입력 여부
     var isFiltering: Bool {
         let searchController = self.navigationItem.searchController
@@ -24,14 +27,14 @@ class SearchViewController : UIViewController {
     }
     
     let searchController = UISearchController(searchResultsController: nil)
-
+    
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
     }
     
     override func viewDidLoad() {
@@ -39,19 +42,34 @@ class SearchViewController : UIViewController {
         
         naviagationSetting()
         searchBarAndTableViewSetting()
+        
+        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { (result :Result<BookModel, BookError>) in
+            switch result {
+            case .success(let data):
+                self.bookList = data.books
+                DispatchQueue.main.sync {
+                    self.searchTableView.reloadData()
+                }
+            case .failure:
+                print("NetworkManager - error ")
+            }
+        }
+        
+//        searchBar.delegate = self
+        
     }
     
     // MARK: - Functions
     /// navigationItem 관련 소스
     func naviagationSetting() {
         self.navigationItem.title = "Search Books"
-        self.navigationItem.searchController = searchController
+//        self.navigationItem.searchController = searchController
     }
     
     /// searchbar, tableview 프로토콜, 검색결과x Label
     func searchBarAndTableViewSetting() {
-        searchController.searchBar.placeholder = "검색어를 입력해보세요."
-        searchController.searchResultsUpdater = self
+//        searchController.searchBar.placeholder = "검색어를 입력해보세요."
+//        searchController.searchResultsUpdater = self
         searchTableView.dataSource = self
         searchTableView.delegate = self
         noSearch.isHidden = true
@@ -64,10 +82,21 @@ class SearchViewController : UIViewController {
             }
         }
     }
+    
 }
 
 
 // MARK: Extension
+
+//extension SearchViewController: UISearchControllerDelegate {
+//
+//}
+
+extension SearchViewController {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("확인버튼이 눌렸다 !")
+    }
+}
 
 extension SearchViewController: UISearchResultsUpdating {
     
@@ -89,19 +118,19 @@ extension SearchViewController: UISearchResultsUpdating {
         
         print("text: \(text)")
         
-//        NetworkManager.shared.getSearchBookList(apiURL: "https://api.itbook.store/1.0/search/\(searchBarWord)", httpMethod: ) { [weak self] data in
-//            print("써치 data : \(data)")
-//
-//                    }
+        //        NetworkManager.shared.getSearchBookList(apiURL: "https://api.itbook.store/1.0/search/\(searchBarWord)", httpMethod: ) { [weak self] data in
+        //            print("써치 data : \(data)")
+        //
+        //                    }
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "GoPassDetailVC", sender: indexPath.row)
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
@@ -122,18 +151,9 @@ extension SearchViewController: UITableViewDataSource {
                 self.noSearch.isHidden = true
             }
         } else {
-                cell.configureView(with: bookList[indexPath.row])
-                self.noSearch.isHidden = true
+            cell.configureView(with: bookList[indexPath.row])
+            self.noSearch.isHidden = true
         }
         return cell
-    }
-}
-
-
-class TestClosure {
-    var completionhandler: ((String) -> Void)? = nil
-
-    func fetchData(completion: (String) -> Void) {
-//        completionhandler = completion
     }
 }
