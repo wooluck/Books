@@ -10,9 +10,9 @@ import Foundation
 struct BookModel: Codable {
     let error: String
     let total: String
+    let page: String?
     let books: [Book]
 }
-
 struct Book: Codable {
     var title: String
     let subtitle: String
@@ -21,7 +21,6 @@ struct Book: Codable {
     let image: String
     let url: String
 }
-
 
 
 struct BookDetail: Codable {

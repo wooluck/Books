@@ -13,6 +13,7 @@ class SearchViewController : UIViewController {
     
     var bookList = [Book]()
     var filteredData = [Book]()
+    var searchBarWord = ""
 
     /// SearchBar 활성화 여부, Text 입력 여부
     var isFiltering: Bool {
@@ -38,7 +39,6 @@ class SearchViewController : UIViewController {
         
         naviagationSetting()
         searchBarAndTableViewSetting()
-        fetchBook()
     }
     
     // MARK: - Functions
@@ -69,68 +69,30 @@ class SearchViewController : UIViewController {
 
 // MARK: Extension
 
-extension SearchViewController {
-    
-    /// URLSession 이용
-    func fetchBook() {
-        guard let url = URL(string: "https://api.itbook.store/1.0/new") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            guard error == nil,
-                  let self = self,
-                  let response = response as? HTTPURLResponse,
-                  let data = data,
-                  // 3
-                  let bookData = try? JSONDecoder().decode(BookModel.self, from: data) else {
-                      print("ERROR : \(error?.localizedDescription)")
-                      return
-                  }
-            switch response.statusCode {
-            case (200...299): //4 .탈출클로저
-                print("Success: \(response.statusCode)")
-                self.bookList = bookData.books
-
-                DispatchQueue.main.async {
-                    self.searchTableView.reloadData()
-                }
-            case (400...499):
-                print(
-                    """
-                    ERROR: Client ERROR \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
-            case (500...599):
-                print(
-                    """
-                    ERROR: Server ERROR \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
-            default:
-                print(
-                    """
-                    ERROR: \(response.statusCode)
-                    Response: \(response)
-                    """
-                )
-            }
-        }
-        dataTask.resume()
-    }
-}
-
 extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         /// searchbar에 입력한 텍스트
         guard let text = searchController.searchBar.text else { return }
+        self.searchBarWord = text
         self.filteredData = self.bookList.filter { $0.title.localizedCaseInsensitiveContains(text)}
         self.noSearch.isHidden = filteredData.isEmpty ? false : true
         self.searchTableView.reloadData()
+        
+        //        NetworkManager.shared.getBookList(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
+        //            print("리얼data Response: \(data)")
+        //            self?.bookList = data
+        //            DispatchQueue.main.sync {
+        //                self?.bookTableView.reloadData()
+        //            }
+        //        }
+        
+        print("text: \(text)")
+        
+//        NetworkManager.shared.getSearchBookList(apiURL: "https://api.itbook.store/1.0/search/\(searchBarWord)", httpMethod: ) { [weak self] data in
+//            print("써치 data : \(data)")
+//
+//                    }
     }
 }
 
@@ -170,8 +132,8 @@ extension SearchViewController: UITableViewDataSource {
 
 class TestClosure {
     var completionhandler: ((String) -> Void)? = nil
-    
-    func fetchData(completion: @escaping (String) -> Void) {
-        completionhandler = completion
+
+    func fetchData(completion: (String) -> Void) {
+//        completionhandler = completion
     }
 }

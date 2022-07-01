@@ -12,6 +12,8 @@ class NewViewController : UIViewController {
     /// 책 모델 배열
     var bookList = [Book]()
 //    var urlSessionCode = NetworkManager()
+    
+    var newApi = "https://api.itbook.store/1.0/new"
     @IBOutlet weak var bookTableView: UITableView!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -23,15 +25,30 @@ class NewViewController : UIViewController {
         super.viewDidLoad()
         
         navigationAndTableViewSet()
-//        getBookList()
         
-        NetworkManager.shared.getBookList(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
-            print("리얼data Response: \(data)")
-            self?.bookList = data
-            DispatchQueue.main.sync {
-                self?.bookTableView.reloadData()
+        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { [weak self] (result : Result<BookModel,BookError>) in
+            
+            
+            switch result {
+            case .success(let data):
+                self?.bookList = data.books
+                DispatchQueue.main.sync {
+                    self?.bookTableView.reloadData()
+                }
+            case .failure(let error):
+                print("\(error)")
             }
         }
+        
+        // MARK: - Ex)WeatherAPI호출
+//        NetworkManager.shared.getWeatherList(apiURL: "https://api.openweathermap.org/data/2.5/weather?q=London&appid=a82bee99cbdb882265172f920605a6a2") { result in
+//            switch result {
+//            case .success(let weather):
+//                print("weatherData = \(weather)")
+//            case .failure(let error):
+//                print("error = \(error)")
+//            }
+//        }
     }
     
     // MARK: - Functions
