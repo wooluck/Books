@@ -53,6 +53,38 @@ class NetworkManager {
     }
     
     
+    // 기존코드
+//    func getBookList<T: Decodable>(apiURL: String, httpMethod: HttpMethod, completion: @escaping (Result<T, BookError>) -> Void) {
+//        guard let url = URL(string: apiURL) else {
+//            completion(.failure(.invalidUrl))
+//            return
+//        }
+//        var request = URLRequest(url: url)
+//        request.httpMethod = httpMethod.rawValue
+//
+//        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else {
+//                completion(.failure(.invalidData))
+//                return
+//            }
+//            guard let bookData = try? JSONDecoder().decode(T.self, from: data) else {
+//                completion(.failure(.invalidBookData))
+//                return
+//            }
+//            guard let response = response as? HTTPURLResponse else {
+//                completion(.failure(.invalidResponse))
+//                return
+//            }
+//            switch response.statusCode {
+//            case (200...299):
+//                completion(.success(bookData))
+//            default:
+//                completion(.failure(.invalidResponseNum))
+//            }
+//        }
+//        dataTask.resume()
+//    }
+    
     
     
     
@@ -91,25 +123,25 @@ class NetworkManager {
 //    }
     
     // MARK: DetailAPI
-    func getDetailBookList(apiURL: String, httpMethod: HttpMethod, completion: @escaping(BookDetail) -> Void) {
-        guard let url = URL(string: apiURL) else { print("url Error: \(apiURL)"); return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = httpMethod.rawValue
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { print("URLSession data Error"); return }
-            guard let bookData = try? JSONDecoder().decode(BookDetail.self, from: data) else {
-                print("JSON ERROR : \(data)"); return}
-            guard error == nil else { print("error: \(error?.localizedDescription)"); return }
-            guard let response = response as? HTTPURLResponse else { print("response Error: \(response)"); return }
-            
-            if response.statusCode <= 299{
-                completion(bookData)
-            }
-        }
-        dataTask.resume()
-    }
+//    func getDetailBookList(apiURL: String, httpMethod: HttpMethod, completion: @escaping(BookDetail) -> Void) {
+//        guard let url = URL(string: apiURL) else { print("url Error: \(apiURL)"); return }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = httpMethod.rawValue
+//
+//        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else { print("URLSession data Error"); return }
+//            guard let bookData = try? JSONDecoder().decode(BookDetail.self, from: data) else {
+//                print("JSON ERROR : \(data)"); return}
+//            guard error == nil else { print("error: \(error?.localizedDescription)"); return }
+//            guard let response = response as? HTTPURLResponse else { print("response Error: \(response)"); return }
+//
+//            if response.statusCode <= 299{
+//                completion(bookData)
+//            }
+//        }
+//        dataTask.resume()
+//    }
     
     // MARK: SearchAPI
 //    func getSearchBookList(apiURL: String, httpMethod: String = "get", completion: @escaping([Book]) -> Void) {
