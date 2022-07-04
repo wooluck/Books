@@ -14,11 +14,6 @@ class NewViewController : UIViewController {
     
     var newApi = "https://api.itbook.store/1.0/new"
     @IBOutlet weak var bookTableView: UITableView!
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

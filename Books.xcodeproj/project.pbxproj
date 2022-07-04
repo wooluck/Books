@@ -18,6 +18,7 @@
 		C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B2286186060050FA74 /* NewDetailViewController.swift */; };
 		C376B0B728618F430050FA74 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B628618F430050FA74 /* BookModel.swift */; };
 		C376B0B92861A6F40050FA74 /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */; };
+		C37D98822872FBB80089ACF3 /* SearchPreViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37D98812872FBB80089ACF3 /* SearchPreViewTableViewCell.swift */; };
 		C3A72705286ABE51000A58E7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A72704286ABE51000A58E7 /* NetworkManager.swift */; };
 		C3A72708286AFAB5000A58E7 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */; };
 		C3A8A16B286E772B00D9DBA1 /* BookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A8A16A286E772B00D9DBA1 /* BookError.swift */; };
@@ -41,6 +42,7 @@
 		C376B0B2286186060050FA74 /* NewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDetailViewController.swift; sourceTree = "<group>"; };
 		C376B0B628618F430050FA74 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		C376B0B82861A6F40050FA74 /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
+		C37D98812872FBB80089ACF3 /* SearchPreViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPreViewTableViewCell.swift; sourceTree = "<group>"; };
 		C3A72704286ABE51000A58E7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C3A72707286AFAB5000A58E7 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		C3A8A16A286E772B00D9DBA1 /* BookError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookError.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				C376B0AE2861802E0050FA74 /* SearchViewController.swift */,
 				7A380764286857F40031CCFE /* SearchDetailTableViewCell.swift */,
 				C3A8A16E286EEF4F00D9DBA1 /* SearchPreViewController.swift */,
+				C37D98812872FBB80089ACF3 /* SearchPreViewTableViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				C376B09928617F350050FA74 /* AppDelegate.swift in Sources */,
 				C376B09B28617F350050FA74 /* SceneDelegate.swift in Sources */,
 				C376B0B3286186060050FA74 /* NewDetailViewController.swift in Sources */,
+				C37D98822872FBB80089ACF3 /* SearchPreViewTableViewCell.swift in Sources */,
 				C3A72705286ABE51000A58E7 /* NetworkManager.swift in Sources */,
 				C376B0B92861A6F40050FA74 /* NewTableViewCell.swift in Sources */,
 				C3A8A16F286EEF4F00D9DBA1 /* SearchPreViewController.swift in Sources */,

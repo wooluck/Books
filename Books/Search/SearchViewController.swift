@@ -32,12 +32,6 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     @IBOutlet weak var noSearch: UILabel!
 
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         naviagationSetting()
