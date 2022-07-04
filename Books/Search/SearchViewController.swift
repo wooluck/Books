@@ -26,11 +26,11 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     }
     
 //    let searchController = UISearchController()
-    let searchController = UISearchController(searchResultsController: NewViewController())
+    let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
-    @IBOutlet weak var searchBar: UISearchBar!
+
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +40,6 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchBar.delegate = self
         naviagationSetting()
         searchBarAndTableViewSetting()
         
@@ -61,6 +60,9 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     
     // MARK: - Functions
 
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        print("새로한 누르기 ")
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("222눌려따따따아앙아아")
     }
