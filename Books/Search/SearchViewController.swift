@@ -11,8 +11,6 @@ import Kingfisher
 
 class SearchViewController : UIViewController, UISearchBarDelegate, UISearchControllerDelegate {
     
-
-
     var bookList = [Book]()
     var filteredData = [Book]()
     var searchBarWord = ""
@@ -27,8 +25,8 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
         return isActive && isSearchBarHasText
     }
     
-    let searchController = UISearchController()
-//    let searchController = UISearchController(searchResultsController: NewViewController())
+//    let searchController = UISearchController()
+    let searchController = UISearchController(searchResultsController: NewViewController())
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
@@ -59,46 +57,21 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
                 print("Response Error: \(error) @@ \(error.localizedDescription)")
             }
         }
-        
-        
-//        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { (result :Result<BookModel, BookError>) in
-//            switch result {
-//            case .success(let data):
-//                self.bookList = data.books
-//                DispatchQueue.main.sync {
-//                    self.searchTableView.reloadData()
-//                }
-//            case .failure:
-//                print("NetworkManager - error ")
-//            }
-//        }
-        
-        
-
-        
     }
     
     // MARK: - Functions
-    
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//
-//        print("눌려따따따아앙아아")
-//    }
-    
-    
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("222눌려따따따아앙아아")
-
     }
+    
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        
         print("눌려따따따아앙아아")
         return true
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//
+
     }
     
     

@@ -39,12 +39,5 @@ struct BookDetail: Codable {
     let price: String
     let image: String
     let url: String
-    //let pdf: Pdf?
 }
-//struct Pdf: Codable {
-//    let Chapter3: String
-//    let FreeeBook: String
-//
-////    FreeeBook Free eBook
-//
-//}
+

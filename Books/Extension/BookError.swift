@@ -16,8 +16,3 @@ enum BookError: Error {
     case invalidResponseNum
     case newVCResultFailure
 }
-
-//enum WeatherError: Error {
-//    case invalidWeatherData
-//    
-//}

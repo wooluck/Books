@@ -20,9 +20,6 @@ class NewTableViewCell: UITableViewCell {
     
     @IBAction func bookLinkButton(_ sender: UIButton) {
 
-        // TODO: 사파리 어플 켜서 홈페이지 띄우기
-//        guard let url = URL(string: "www.naver.com"), UIApplication.shared.canOpenURL(url) else { return }
-//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     override func layoutSubviews() {
@@ -46,10 +43,9 @@ class NewTableViewCell: UITableViewCell {
     /// 가져온 데이터 mapping
     func configureView(with bookModel: Book) {
 
-//        let imageURL = URL(string: bookModel.image)
+
         if let url = URL(string: bookModel.image) {
             bookImage.load(url: url)
-//            bookImage.kf.setImage(with: url)
             let imageData = try! Data(contentsOf: url)
             bookImage.image = UIImage(data: imageData)
         } else {

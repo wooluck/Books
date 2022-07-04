@@ -53,52 +53,11 @@ class NewDetailViewController: UIViewController {
             }
         }
 
-        
+    }
         
         // MARK: - URLSession
-//        if let isbn = prepareBook?.isbn13 {
-//            let myurl = "https://api.itbook.store/1.0/books/" + isbn
-//            print("myurl: \(myurl)")
-            // <MyModel,Error> BookModel
-//            NetworkManager.shared.getBookList(apiURL: myurl, httpMethod: .get) { [weak self] (result : Result<BookDetail, BookError>) in
-//                guard let `self` = self else { return }
-//
-//                switch result {
-//                case .success(let book):
-//                    self.detailBook = book
-//                    DispatchQueue.main.sync {
-//                        let imageURL = URL(string: self.detailBook?.image ?? "nil")
-//                        self.bookDetailImage.load(url: imageURL!)
-//                        self.bookDetailTitle.text = self.detailBook?.title
-//                        self.bookDetailSubTitle.text = self.detailBook?.subtitle
-//                        self.bookDetailIsbn13.text = self.detailBook?.isbn13
-//                        self.bookDetailPrice.text = self.detailBook?.price
-//                        self.bookDetailLinkButton.setTitle(self.detailBook?.url, for: .normal)
-//                    }
-//                case .failure(let error):
-//                    print("\(error)")
-//                }
-//            }
-            
-            
-//            NetworkManager.shared.getDetailBookList(apiURL: myurl, httpMethod: .get) { data in
-//                print("data: \(data)")
-//                self.detailBook = data
-//                DispatchQueue.main.sync {
-//                    let imageURL = URL(string: self.detailBook?.image ?? "nil")
-//                    self.bookDetailImage.load(url: imageURL!)
-//                    self.bookDetailTitle.text = self.detailBook?.title
-//                    self.bookDetailSubTitle.text = self.detailBook?.subtitle
-//                    self.bookDetailIsbn13.text = self.detailBook?.isbn13
-//                    self.bookDetailPrice.text = self.detailBook?.price
-//                    self.bookDetailLinkButton.setTitle(self.detailBook?.url, for: .normal)
-//                }
-//            }
-//
-//        } else {
-//            print("isbn13 is Error")
-//        }
-    }
+
+    
     
     // MARK: Functions
     /// navigationItem
