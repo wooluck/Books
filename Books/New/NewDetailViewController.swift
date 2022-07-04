@@ -12,8 +12,7 @@ class NewDetailViewController: UIViewController {
     
     var prepareBook: Book? {
         didSet {
-            print(prepareBook)
-            
+            print(prepareBook)            
         }
     }
     var detailBook: BookDetail?
