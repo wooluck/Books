@@ -11,7 +11,7 @@ struct BookModel: Codable {
     let error: String
     let total: String
     let page: String?
-    let books: [Book]
+    var books: [Book]
 }
 struct Book: Codable {
     var title: String

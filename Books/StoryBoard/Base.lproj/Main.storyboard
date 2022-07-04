@@ -254,16 +254,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4DT-CP-ZWo">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="vOl-y3-e8X">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="140" id="kzo-JY-3ub" customClass="SearchDetailTableViewCell" customModule="Books" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88.5" width="414" height="140"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kzo-JY-3ub" id="7Oy-Iu-ihL">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
@@ -362,7 +357,6 @@
                     <navigationItem key="navigationItem" id="N3B-Gc-b16"/>
                     <connections>
                         <outlet property="noSearch" destination="TdG-br-wpX" id="Kaa-4L-hA9"/>
-                        <outlet property="searchBar" destination="vOl-y3-e8X" id="P1v-Xa-OSL"/>
                         <outlet property="searchTableView" destination="4DT-CP-ZWo" id="Kgp-bg-dQo"/>
                         <segue destination="HbA-Sz-GOb" kind="show" identifier="GoPassDetailVC" id="e6t-9Z-uCd"/>
                     </connections>
@@ -421,7 +415,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CT8-gw-BJd" kind="relationship" relationship="rootViewController" id="qmt-6f-zFS"/>
+                        <segue destination="CT8-gw-BJd" kind="relationship" relationship="rootViewController" id="D0b-kx-sS6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sc5-6Y-aEH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -555,7 +549,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hcb-jO-85U"/>
+        <segue reference="e6t-9Z-uCd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>

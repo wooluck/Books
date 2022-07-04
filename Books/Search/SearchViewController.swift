@@ -27,7 +27,8 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
         return isActive && isSearchBarHasText
     }
     
-    //let searchController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController()
+//    let searchController = UISearchController(searchResultsController: NewViewController())
     
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var noSearch: UILabel!
@@ -41,23 +42,39 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+//        searchBar.delegate = self
         naviagationSetting()
         searchBarAndTableViewSetting()
         
-        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { (result :Result<BookModel, BookError>) in
-            switch result {
-            case .success(let data):
-                self.bookList = data.books
-                DispatchQueue.main.sync {
+        Task {
+            do {
+                let books = try await NetworkManager.shared.loadBook()
+                
+                self.bookList = books
+                
+                DispatchQueue.main.async {
                     self.searchTableView.reloadData()
                 }
-            case .failure:
-                print("NetworkManager - error ")
+            }catch {
+                print("Response Error: \(error) @@ \(error.localizedDescription)")
             }
         }
         
-//
+        
+//        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { (result :Result<BookModel, BookError>) in
+//            switch result {
+//            case .success(let data):
+//                self.bookList = data.books
+//                DispatchQueue.main.sync {
+//                    self.searchTableView.reloadData()
+//                }
+//            case .failure:
+//                print("NetworkManager - error ")
+//            }
+//        }
+        
+        
+
         
     }
     
@@ -67,6 +84,8 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
 //
 //        print("눌려따따따아앙아아")
 //    }
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("222눌려따따따아앙아아")
@@ -85,14 +104,15 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
     
     /// navigationItem 관련 소스
     func naviagationSetting() {
-        self.navigationItem.title = "Search Books"
-//        self.navigationItem.searchController = searchController
+        title = "Search Books"
+//        self.navigationItem.title = "Search Books"
+        self.navigationItem.searchController = searchController
     }
     
     /// searchbar, tableview 프로토콜, 검색결과x Label
     func searchBarAndTableViewSetting() {
-//        searchController.searchBar.placeholder = "검색어를 입력해보세요."
-//        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "검색어를 입력해보세요."
+        searchController.searchResultsUpdater = self
         searchTableView.dataSource = self
         searchTableView.delegate = self
         noSearch.isHidden = true
@@ -111,9 +131,7 @@ class SearchViewController : UIViewController, UISearchBarDelegate, UISearchCont
 
 // MARK: Extension
 
-//extension SearchViewController: UISearchControllerDelegate {
-//
-//}
+
 
 extension SearchViewController {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -130,21 +148,10 @@ extension SearchViewController: UISearchResultsUpdating {
         self.filteredData = self.bookList.filter { $0.title.localizedCaseInsensitiveContains(text)}
         self.noSearch.isHidden = filteredData.isEmpty ? false : true
         self.searchTableView.reloadData()
-        
-        //        NetworkManager.shared.getBookList(apiURL: "https://api.itbook.store/1.0/new", httpMethod: .get) { [weak self] data in
-        //            print("리얼data Response: \(data)")
-        //            self?.bookList = data
-        //            DispatchQueue.main.sync {
-        //                self?.bookTableView.reloadData()
-        //            }
-        //        }
-        
+
         print("text: \(text)")
         
-        //        NetworkManager.shared.getSearchBookList(apiURL: "https://api.itbook.store/1.0/search/\(searchBarWord)", httpMethod: ) { [weak self] data in
-        //            print("써치 data : \(data)")
-        //
-        //                    }
+
     }
 }
 

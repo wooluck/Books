@@ -11,7 +11,6 @@ class NewViewController : UIViewController {
     
     /// 책 모델 배열
     var bookList = [Book]()
-//    var urlSessionCode = NetworkManager()
     
     var newApi = "https://api.itbook.store/1.0/new"
     @IBOutlet weak var bookTableView: UITableView!
@@ -26,18 +25,34 @@ class NewViewController : UIViewController {
         
         navigationAndTableViewSet()
         
-        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { [weak self] (result : Result<BookModel,BookError>) in
- 
-            switch result {
-            case .success(let data):
-                self?.bookList = data.books
-                DispatchQueue.main.sync {
-                    self?.bookTableView.reloadData()
+        Task {
+            do {
+                let books = try await NetworkManager.shared.loadBook()
+                
+                self.bookList = books
+                
+                DispatchQueue.main.async {
+                    self.bookTableView.reloadData()
                 }
-            case .failure(let error):
-                print("\(error)")
+            }catch {
+                print("Response Error: \(error) @@ \(error.localizedDescription)")
             }
         }
+        
+        
+//        // 원래코드
+//        NetworkManager.shared.getBookList(apiURL: newApi, httpMethod: .get) { [weak self] (result : Result<BookModel,BookError>) in
+//
+//            switch result {
+//            case .success(let data):
+//                self?.bookList = data.books
+//                DispatchQueue.main.sync {
+//                    self?.bookTableView.reloadData()
+//                }
+//            case .failure(let error):
+//                print("\(error)")
+//            }
+//        }
         
         // MARK: - Ex)WeatherAPI호출
 //        NetworkManager.shared.getWeatherList(apiURL: "https://api.openweathermap.org/data/2.5/weather?q=London&appid=a82bee99cbdb882265172f920605a6a2") { result in
@@ -67,7 +82,6 @@ class NewViewController : UIViewController {
         if let vc = segue.destination as? NewDetailViewController {
             if let index = sender as? Int {
                 vc.prepareBook = bookList[index]
-//                vc.prepareIsbn13 = bookList[index]
             }
         }
     }
@@ -83,6 +97,7 @@ extension NewViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "PassDetailVC", sender: indexPath.row)
+       
     }
 }
 
