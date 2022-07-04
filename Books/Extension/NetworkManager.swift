@@ -78,6 +78,43 @@ class NetworkManager {
     
     
     
+    
+    
+    // MARK: NewAPI
+//    func getBookList(apiURL: String, httpMethod: HttpMethod, completion: @escaping (Result<[Book], BookError>) -> Void) {
+//        guard let url = URL(string: apiURL) else {
+//            completion(.failure(.invalidUrl))
+//            return
+//        }
+//        var request = URLRequest(url: url)
+//        request.httpMethod = httpMethod.rawValue
+//
+//        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data else {
+//                completion(.failure(.invalidData))
+//                return
+//            }
+//            guard let bookData = try? JSONDecoder().decode(T.self, from: data) else {
+//                completion(.failure(.invalidBookData))
+//                return
+//            }
+//            guard let response = response as? HTTPURLResponse else {
+//                completion(.failure(.invalidResponse))
+//                return
+//            }
+//            switch response.statusCode {
+//            case (200...299):
+//                completion(.success(bookData))
+//            default:
+//                completion(.failure(.invalidResponseNum))
+//            }
+//        }
+//        dataTask.resume()
+//    }
+    
+    
+    
+    
     // New
     func loadBook() async throws -> [Book] {
         let books: [Book] = try await withCheckedThrowingContinuation({ continuation in
