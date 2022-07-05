@@ -11,16 +11,7 @@ import Kingfisher
 class SearchPreViewTableViewCell: UITableViewCell {
     
     var preparebook: Book?
-    
-    
-    
-//    @IBOutlet weak var searchBookImage: UIImageView!
-//    @IBOutlet weak var searchBookTitle: UILabel!
-//    @IBOutlet weak var searchBookSubTitle: UILabel!
-//    @IBOutlet weak var searchBookIsbn13: UILabel!
-//    @IBOutlet weak var searchBookPrice: UILabel!
-//    @IBOutlet weak var searchBookLinkButton: UILabel!
-    
+
     @IBOutlet weak var searchPreBookImage: UIImageView!
     @IBOutlet weak var searchPreBookTitle: UILabel!
     @IBOutlet weak var searchPreBookSubTitle: UILabel!

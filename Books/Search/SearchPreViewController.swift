@@ -16,8 +16,11 @@ class SearchPreViewController: UIViewController, UISearchControllerDelegate, UIS
     var filteredData = [Book]()
     var searchBarWord = ""
     
+    var searchTimer: Timer?
+    
     var newApi = "https://api.itbook.store/1.0/new"
     let searchController = UISearchController(searchResultsController: nil)
+    
     
     @IBOutlet weak var searchBookTableView: UITableView!
     
@@ -30,11 +33,7 @@ class SearchPreViewController: UIViewController, UISearchControllerDelegate, UIS
     }
     
     @IBOutlet weak var noBookList: UILabel!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,21 +42,6 @@ class SearchPreViewController: UIViewController, UISearchControllerDelegate, UIS
         searchController.searchBar.delegate = self
         
         navigationAndTableViewSet()
-        
-        
-        Task {
-            do {
-                let books = try await NetworkManager.shared.loadSearchBook(query: searchBarWord)
-                
-                self.bookList = books
-                
-                DispatchQueue.main.async {
-                    self.searchBookTableView.reloadData()
-                }
-            }catch {
-                print("Response Error: \(error) @@ \(error.localizedDescription)")
-            }
-        }
         
     }
     
@@ -68,7 +52,7 @@ class SearchPreViewController: UIViewController, UISearchControllerDelegate, UIS
         self.navigationItem.title = "New Books"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         searchController.searchBar.placeholder = "검색어를 입력해보세요."
-        //        searchController.searchResultsUpdater = self
+        searchController.searchResultsUpdater = self
         noBookList.isHidden = true
         
         searchBookTableView.delegate = self
@@ -85,24 +69,12 @@ class SearchPreViewController: UIViewController, UISearchControllerDelegate, UIS
         }
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else { return }
-        self.searchBarWord = text
-        print("text = \(text)")
-        
-        Task {
-            do {
-                let books = try await NetworkManager.shared.loadSearchBook(query: searchBarWord)
-                
-                self.bookList = books
-                
-                DispatchQueue.main.async {
-                    self.searchBookTableView.reloadData()
-                }
-            }catch {
-                print("Response Error: \(error) @@ \(error.localizedDescription)")
-            }
-        }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("searchBarTextDidEndEditing")
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("searchBar_textDidChange ")
     }
 }
 
@@ -122,43 +94,65 @@ extension SearchPreViewController : UITableViewDelegate {
 
 extension SearchPreViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return self.isFiltering ? self.filteredData.count : self.bookList.count
-        return self.bookList.count
+                return self.isFiltering ? self.filteredData.count : self.bookList.count
+//        return self.bookList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPreCell", for: indexPath) as? SearchPreViewTableViewCell else { return UITableViewCell() }
         
-        //        if self.isFiltering {
-        //            if filteredData.count != 0 {
-        //                cell.configureView(with: filteredData[indexPath.row])
-        //                self.noBookList.isHidden = true
-        //            }
-        //        } else {
+                if self.isFiltering {
+                    if filteredData.count != 0 {
+                        cell.configureView(with: filteredData[indexPath.row])
+                        self.noBookList.isHidden = true
+                    }
+                } else {
         cell.configureView(with: bookList[indexPath.row])
         self.noBookList.isHidden = true
-        //        }
+                }
         return cell
     }
     
 }
 
+extension SearchPreViewController: UISearchResultsUpdating {
+    
+    // Timer
 
+    func updateSearchResults(for searchController: UISearchController) {
+        /// searchbar에 입력한 텍스트
+        guard let text = searchController.searchBar.text else { return }
+        self.searchBarWord = text
+        self.noBookList.isHidden = filteredData.isEmpty ? false : true
+        self.searchBookTableView.reloadData()
+        
+        self.searchTimer?.invalidate()
 
-
-
-//extension SearchPreViewController: UISearchResultsUpdating {
-//
-//    func updateSearchResults(for searchController: UISearchController) {
-//        /// searchbar에 입력한 텍스트
-//        guard let text = searchController.searchBar.text else { return }
-//        self.searchBarWord = text
-//        self.filteredData = self.bookList.filter { $0.title.localizedCaseInsensitiveContains(text)}
-//        self.noBookList.isHidden = filteredData.isEmpty ? false : true
-//        self.searchBookTableView.reloadData()
-//
-////        print("text: \(text)")
-//
-//    }
-//}
+        searchTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { [weak self] timer in
+            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                guard let `self` = self else { return }
+                
+                Task {
+                    do {
+                        
+                        let books = try await NetworkManager.shared.loadSearchBook(query: self.searchBarWord)
+                        
+                        self.bookList = books
+                        print("bookList = \(self.bookList.count)")
+                        self.filteredData = self.bookList.filter { $0.title.localizedCaseInsensitiveContains(self.searchBarWord)}
+                        print("filterData = \(self.filteredData)")
+                        
+                        DispatchQueue.main.async {
+                            self.searchBookTableView.reloadData()
+                        }
+                    } catch {
+                        print("Response Error: \(error) @@ \(error.localizedDescription)")
+                    }
+                }
+            }
+        })
+        
+    }
+    
+}
