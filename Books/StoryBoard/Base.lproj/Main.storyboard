@@ -523,18 +523,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVq-yx-Lhu">
+                                <rect key="frame" x="132" y="434.5" width="150" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bsd-Cx-dfk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="uKF-LV-5Zi" secondAttribute="bottom" id="9QU-7c-Isb"/>
                             <constraint firstItem="uKF-LV-5Zi" firstAttribute="trailing" secondItem="bsd-Cx-dfk" secondAttribute="trailing" constant="-20" id="JiT-hL-AR5"/>
+                            <constraint firstItem="KVq-yx-Lhu" firstAttribute="centerY" secondItem="hc3-6p-w6H" secondAttribute="centerY" id="Rzj-r1-qFp"/>
                             <constraint firstItem="uKF-LV-5Zi" firstAttribute="top" secondItem="hc3-6p-w6H" secondAttribute="top" id="eJj-aU-UWt"/>
+                            <constraint firstItem="KVq-yx-Lhu" firstAttribute="centerX" secondItem="hc3-6p-w6H" secondAttribute="centerX" id="hv4-Ry-A7B"/>
                             <constraint firstItem="uKF-LV-5Zi" firstAttribute="leading" secondItem="bsd-Cx-dfk" secondAttribute="leading" constant="20" id="oNo-20-yQz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TJ1-vN-RzT"/>
                     <connections>
+                        <outlet property="noBookList" destination="KVq-yx-Lhu" id="hTO-0s-GbQ"/>
                         <outlet property="searchBookTableView" destination="uKF-LV-5Zi" id="Orm-cj-Rkc"/>
                         <segue destination="HbA-Sz-GOb" kind="show" identifier="PrePass" id="DSI-dh-msN"/>
                     </connections>
