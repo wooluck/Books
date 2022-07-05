@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 모델
 struct BookModel: Codable {
     let error: String
     let total: String
